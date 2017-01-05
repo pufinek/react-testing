@@ -5,6 +5,10 @@ import Statistic from '../components/Statistic';
 import Word from '../components/Word';
 import AddWord from '../components/AddWord';
 
+import base from '../base';
+
+
+
 
 class App extends React.Component {
     constructor() {
@@ -27,6 +31,17 @@ class App extends React.Component {
         this.setState({vocabulary});
     }
 
+    componentWillMount(){
+        this.ref=base.syncState(`vocabulary`, {
+            context: this,
+            state:'vocabulary'
+        });
+    }
+
+    componentWillUnmount(){
+        base.removeBinding(this.ref);
+    }
+
 
     render() {
         return (
@@ -36,7 +51,7 @@ class App extends React.Component {
 
                     <Statistic />
 
-                    <div className="col-md-4 col-sm-12">
+                    <div className="col-md-4 col-sm-12 addVocabulary-box">
                         <h2>Přidat slovíčko</h2>
                         <AddWord addVocabulary={this.addVocabulary}/>
 

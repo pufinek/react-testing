@@ -59,6 +59,7 @@ class App extends React.Component {
                 </div>
                 <div className="row">
                     <h2>Slovíčka v databázi</h2>
+                    <p>(Barevně označená slovíčka obsahují české znaky)</p>
                     <ul className="vocabulary-list">
                         {
                             Object

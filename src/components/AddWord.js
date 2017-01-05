@@ -4,14 +4,24 @@ class AddWord extends React.Component{
 
     createWord(event){
         event.preventDefault();
+        var reg = /[ěščřžýáíé]/gi;
+        var slovo = this.cz.value;
+        var ceskeZnaky = slovo.match(reg);
+        console.log(ceskeZnaky);
+
+        const maHacky= (ceskeZnaky!==null) ? true :false;
+        console.log(maHacky);
+
         const word = {
             cz: this.cz.value,
             en: this.en.value,
-            hacky: this.hacky.checked
+            hacky: maHacky
         }
         this.props.addVocabulary(word);
         this.addForm.reset();
     }
+
+
 
 
     render(){
@@ -27,9 +37,6 @@ class AddWord extends React.Component{
                 <div className="col-md-6 form-group">
                     <label htmlFor="en">Anglicky (EN):</label>
                     <input type="text" ref={(input) => this.en = input} className="form-control" id="en"/>
-                </div>
-                <div className="col-md-12 checkbox">
-                    <label><input ref={(input) => this.hacky = input} type="checkbox" /> Diakritika v CZ?</label>
                 </div>
                 <button type="submit" className="btn btn-default">Přidat</button>
             </form>

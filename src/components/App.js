@@ -7,48 +7,53 @@ import AddWord from '../components/AddWord';
 
 
 class App extends React.Component {
-    constructor(){
+    constructor() {
         super();
 
-        this.addVocabulary=this.addVocabulary.bind(this);
+        this.addVocabulary = this.addVocabulary.bind(this);
 
-        this.state={
-            vocabulary:{},
-            statistic:{},
-            symbols:"yxcvbnmasdfghjklqwertzuiop,.(){}-;+ěščřžýáíéYXCVBNMASDFGHJKLQWERTZUIOP+ĚŠČŘŽÝÁÍÉ"
+        this.state = {
+            vocabulary: {},
+            statistic: {},
+            symbols: "yxcvbnmasdfghjklqwertzuiop,.(){}-;+ěščřžýáíéYXCVBNMASDFGHJKLQWERTZUIOP+ĚŠČŘŽÝÁÍÉ"
         }
     }
 
-    addVocabulary(Word){
-        const vocabulary={...this.state.vocabulary};
+    addVocabulary(Word) {
+        const vocabulary = {...this.state.vocabulary};
         const timestamp = Date.now();
 
-        vocabulary[`key-${timestamp}`]=Word;
+        vocabulary[`key-${timestamp}`] = Word;
         this.setState({vocabulary});
     }
 
 
-
     render() {
         return (
+            <div className="container">
                 <div className="row">
-                        <TestingGuide />
+                    <TestingGuide />
 
-                         <Statistic />
+                    <Statistic />
 
                     <div className="col-md-4 col-sm-12">
+                        <h2>Přidat slovíčko</h2>
                         <AddWord addVocabulary={this.addVocabulary}/>
-                        <ul className="vocabulary-list">
-                            {
-                                Object
-                                    .keys(this.state.vocabulary)
-                                    .map(key => <Word key={key} index={key} details={this.state.vocabulary[key]} />)
-                            }
-
-                        </ul>
 
                     </div>
                 </div>
+                <div className="row">
+                    <h2>Slovíčka v databázi</h2>
+                    <ul className="vocabulary-list">
+                        {
+                            Object
+                                .keys(this.state.vocabulary)
+                                .map(key => <Word key={key} index={key} details={this.state.vocabulary[key]}/>)
+                        }
+
+                    </ul>
+                </div>
+            </div>
 
         )
     }

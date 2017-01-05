@@ -16,6 +16,8 @@ class AddWord extends React.Component{
 
     render(){
         return(
+            <div className="" >
+
             <form ref={(input) => this.addForm = (input)} className="" onSubmit={(e) => this.createWord(e)}>
 
                 <div className="col-md-6 form-group">
@@ -31,6 +33,9 @@ class AddWord extends React.Component{
                 </div>
                 <button type="submit" className="btn btn-default">Přidat</button>
             </form>
+
+
+                </div>
         )
     }
 

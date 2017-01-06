@@ -15,6 +15,7 @@ class App extends React.Component {
         super();
 
         this.addVocabulary = this.addVocabulary.bind(this);
+        this.updateWord = this.updateWord.bind(this);
 
         this.state = {
             vocabulary: {},
@@ -29,6 +30,14 @@ class App extends React.Component {
 
         vocabulary[`key-${timestamp}`] = Word;
         this.setState({vocabulary});
+    }
+    updateWord(key, updatedWord){
+       const vocabulary={...this.state.vocabulary};
+       vocabulary[key]=updatedWord;
+       console.log(vocabulary);
+        console.log(updatedWord);
+       this.setState({vocabulary});
+
     }
 
     componentWillMount(){
@@ -64,7 +73,7 @@ class App extends React.Component {
                         {
                             Object
                                 .keys(this.state.vocabulary)
-                                .map(key => <Word key={key} index={key} details={this.state.vocabulary[key]}/>)
+                                .map(key => <Word key={key} index={key} details={this.state.vocabulary[key]} updateWord={this.updateWord}/>)
                         }
 
                     </ul>

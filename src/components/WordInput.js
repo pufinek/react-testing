@@ -22,16 +22,20 @@ class WordInput extends React.Component{
 	disableEditing(){
 		this.setState({editing:false});
 	}
-	/*displayInput(){
-		return(
-			<input type="text" value={this.props.details.cz} onBlur={this.disableEditing} autoFocus />
-		)
-	}*/
+
+	handleChange(index, e){
+        const word=this.props.details;
+        const updatedWord = {...word, [e.target.name]:e.target.value}
+        console.log(updatedWord);
+
+        this.props.updateWord(index, updatedWord);
+    }
+
 
 	displayInput(){
 		const lang=this.props.language;
 		return(
-			<input type="text" defaultValue={this.props.details[lang]} onBlur={this.disableEditing}  autoFocus/>
+			<input type="text" value={this.props.details[lang]} name={lang} onBlur={this.disableEditing} onChange={(e) => this.handleChange(this.props.index, e)}  autoFocus/>
 		)
 	}
 
@@ -41,6 +45,7 @@ class WordInput extends React.Component{
 			<span onClick={this.allowEditing}>{this.props.details[lang]}</span>
 		)
 	}
+
 
 
 	render(){

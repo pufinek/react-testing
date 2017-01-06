@@ -3,20 +3,14 @@ import WordInput from '../components/WordInput';
 
 class Word extends React.Component{
     render(){
+    	const word=this.props.details; //info o aktualnim slove
         return(
 
 
-            <li className={this.props.details.hacky ? 'hacky col-md-4 col-sm-6' : 'col-md-4 col-sm-6'} >
+            <li className={word.hacky ? 'hacky col-md-4 col-sm-6' : 'col-md-4 col-sm-6'} >
                
-                <WordInput details={this.props.details} language="cz"/>
-
-                 {/* <span title="anglicky">
-                	<strong>en:&nbsp;</strong>                	
-                	{this.state.editing ? this.displayInput('en') : this.displayResult('en')}
-               <input type="text" value={this.props.details.en} />
-                </span>*/}
-                <WordInput  details={this.props.details} language="en"/>
-
+                <WordInput details={word} language="cz" index={this.props.index} updateWord={this.props.updateWord}/>
+                <WordInput  details={word} language="en" index={this.props.index} updateWord={this.props.updateWord}/>
                 <span className="cross">x</span>
 
             </li>

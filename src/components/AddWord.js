@@ -4,7 +4,7 @@ class AddWord extends React.Component{
 
     createWord(event){
         event.preventDefault();
-        var reg = /[ěščřžýáíé]/gi;
+        var reg = /[ěščřžýáíéúů]/gi;
         var slovo = this.cz.value;
         var ceskeZnaky = slovo.match(reg);
         console.log(ceskeZnaky);

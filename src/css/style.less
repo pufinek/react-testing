@@ -15,12 +15,16 @@ h3{
 	min-height: 300px;
 	text-align: center;
 }
-.container{
-	width: 1240px;
+
+@media screen and (min-width:992px ) {
+	width: 100%;
+	max-width: 1240px;
 }
+
 .testingGuide{
 	button{
 		margin-bottom: 5px;
+		min-width: 200px;
 	}
 }
 
@@ -33,14 +37,16 @@ h3{
 		border: 1px solid gray;
 		min-height: 20px;
 		line-height: 20px;
-		display: table;
 		position: relative;
 		margin-left: -1px;
 		margin-top: -1px;
 		text-align: left;
 		span{
-			display: table-cell;
+			display: inline-block;
 			padding: 5px;
+			&:first-child{
+				min-width: 50%;
+			}
 
 			&.cross{
 				position: absolute;

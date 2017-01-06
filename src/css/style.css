@@ -40,21 +40,24 @@ h3 {
   margin-top: -1px;
   text-align: left;
 }
-.vocabulary-list li span {
+.vocabulary-list li .word-input {
+  display: block;
+  height: 32px;
+}
+.vocabulary-list li .word-input span {
   display: inline-block;
+  width: calc(100% - 30px);
   padding: 5px;
-  border: 1px solid transparent;
 }
-.vocabulary-list li span:first-child {
-  min-width: 50%;
-}
-.vocabulary-list li span.cross {
+.vocabulary-list li .cross {
   position: absolute;
   right: 0;
   bottom: 0;
+  padding: 5px;
 }
 .vocabulary-list li input[type=text] {
   padding: 5px;
+  width: calc(100% - 30px);
   border: 1px solid gray;
 }
 .vocabulary-list li.hacky {

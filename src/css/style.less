@@ -46,22 +46,24 @@ h3{
 		margin-left: -1px;
 		margin-top: -1px;
 		text-align: left;
-		span{
-			display: inline-block;
+		.word-input{
+			display: block;
+			height: 32px;
+			span{
+				display: inline-block;
+				width: ~"calc(100% - 30px)";
+				padding: 5px;
+			}
+		}
+		.cross{
+			position: absolute;
+			right: 0;
+			bottom: 0;
 			padding: 5px;
-			border:1px solid transparent;
-			&:first-child{
-				min-width: 50%;
-			}
-
-			&.cross{
-				position: absolute;
-				right: 0;
-				bottom: 0;
-			}
 		}
 		input[type=text]{
 			padding: 5px;
+			width: ~"calc(100% - 30px)";
 			border:1px solid @gray;
 		}
 		&.hacky{

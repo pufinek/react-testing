@@ -23,7 +23,6 @@ class TestingGuide extends React.Component {
     }
 
 }
-{/* tohle bude jen vypisovat vysledky - bute to Stateless Function */
-}
+{/* tohle bude jen vypisovat vysledky - bute to Stateless Function */}
 
 export default TestingGuide;

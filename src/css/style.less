@@ -1,9 +1,14 @@
+@red: #ab1d22;
+@gray: gray;
+@green:green;
+
+
 h1, h2{
 	font-size: 25px;
 	text-align: center;
 	font-weight: bold;
 	margin-bottom: 40px;
-	color:#ab1d22;
+	color:@red;
 
 }
 h3{
@@ -11,7 +16,7 @@ h3{
 	text-align: center;
 }
 .testingGuide, .statistic, .addVocabulary-box{
-	border: 1px solid gray;
+	border: 1px solid @gray;
 	min-height: 300px;
 	text-align: center;
 }
@@ -34,7 +39,7 @@ h3{
 	margin: 0;
 	padding: 0;
 	li{
-		border: 1px solid gray;
+		border: 1px solid @gray;
 		min-height: 20px;
 		line-height: 20px;
 		position: relative;
@@ -44,6 +49,7 @@ h3{
 		span{
 			display: inline-block;
 			padding: 5px;
+			border:1px solid transparent;
 			&:first-child{
 				min-width: 50%;
 			}
@@ -54,10 +60,25 @@ h3{
 				bottom: 0;
 			}
 		}
+		input[type=text]{
+			padding: 5px;
+			border:1px solid @gray;
+		}
 		&.hacky{
 			background-color: beige;
 		}
 
 
 	}
+}
+.todo-list{
+	ul{
+		list-style:none;
+	}
+}
+.glyphicon-ok{
+	color:@green;
+}
+.glyphicon-remove{
+	color: @red;
 }

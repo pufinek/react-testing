@@ -59,7 +59,7 @@ class App extends React.Component {
                 </div>
                 <div className="row">
                     <h2>Slovíčka v databázi</h2>
-                    <p>(Barevně označená slovíčka obsahují české znaky)</p>
+                    <p>(Barevně označená slovíčka obsahují české znaky!)</p>
                     <ul className="vocabulary-list">
                         {
                             Object
@@ -68,6 +68,17 @@ class App extends React.Component {
                         }
 
                     </ul>
+                </div>
+                <div className="row todo-list">
+                <h2>TODO:</h2>
+                <ul>
+                    <li><span className="glyphicon glyphicon-ok"></span> &nbsp; detekce českých znaků při řidávání do slovníku</li>
+                    <li> <span className="glyphicon glyphicon-remove" ></span> &nbsp; editace položek v databázi</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; mazání položek v databázi</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; kontrola duplicit (nebude)</li>
+
+                </ul>
+
                 </div>
             </div>
 

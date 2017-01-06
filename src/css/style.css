@@ -43,6 +43,7 @@ h3 {
 .vocabulary-list li span {
   display: inline-block;
   padding: 5px;
+  border: 1px solid transparent;
 }
 .vocabulary-list li span:first-child {
   min-width: 50%;
@@ -52,6 +53,19 @@ h3 {
   right: 0;
   bottom: 0;
 }
+.vocabulary-list li input[type=text] {
+  padding: 5px;
+  border: 1px solid gray;
+}
 .vocabulary-list li.hacky {
   background-color: beige;
+}
+.todo-list ul {
+  list-style: none;
+}
+.glyphicon-ok {
+  color: green;
+}
+.glyphicon-remove {
+  color: #ab1d22;
 }

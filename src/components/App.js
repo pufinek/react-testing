@@ -2,7 +2,7 @@ import React from 'react';
 //import TestingForm from '../components/TestingForm';
 import TestingGuide from '../components/TestingGuide';
 import Statistic from '../components/Statistic';
-import Word from '../components/Word';
+import ListOfWords from '../components/ListOfWords';
 import AddWord from '../components/AddWord';
 import {maHacky} from '../helpers';
 
@@ -81,32 +81,26 @@ class App extends React.Component {
 
                     <div className="col-md-4 col-sm-12 addVocabulary-box">
                         <h2>Přidat slovíčko</h2>
-                        <AddWord addVocabulary={this.addVocabulary}/>
 
+                            <AddWord addVocabulary={this.addVocabulary}/>
+
+                        <div className="row">
+                            <div className="col-md-12">
+                                <button className="btn btn-primary" onClick={this.loadWords}>Načíst ze souboru</button>
+                            </div>  
+                        </div>
                     </div>
                 </div>
-               <div className="row">
-                    <h2>Slovíčka v databázi</h2>
-                    <p>(Barevně označená slovíčka obsahují české znaky!)</p>
-                    <ul className="vocabulary-list">
-                        {
-                            Object
-                                .keys(this.state.vocabulary)
-                                .map(key => <Word key={key} index={key} details={this.state.vocabulary[key]} updateWord={this.updateWord}/>)
-                        }
 
-                    </ul>
-                </div>
-
-                <div className="row">
-                    <button className="btn btn-primary" onClick={this.loadWords}>Načíst ze souboru</button>
-                </div>
+                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord}/>
 
                 <div className="row todo-list">
                 <h2>TODO:</h2>
                 <ul>
                     <li><span className="glyphicon glyphicon-ok"></span> &nbsp; detekce českých znaků při řidávání do slovníku</li>
                     <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; editace položek v databázi</li>
+                    <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; načtení slovíček ze souboru</li>
+                    <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; detekce háčků při editaci a načtení ze souboru</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; mazání položek v databázi</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; kontrola duplicit (nebude)</li>
 

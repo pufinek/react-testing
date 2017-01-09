@@ -1,4 +1,5 @@
 import React from 'react';
+import {maHacky} from '../helpers';
 
 class WordInput extends React.Component{
 
@@ -19,23 +20,35 @@ class WordInput extends React.Component{
 	allowEditing(){
 		this.setState({editing:true});
 	}
-	disableEditing(){
+	disableEditing(index, e){
+		//aktualizace stavo o háčcích až po kliknutí mimo input
+		const word=this.props.details;
+		var updatedWord;
+        if(e.target.name==='cz'){
+        	const hacky=maHacky(e.target.value);
+   			updatedWord = {...word, [e.target.name]:e.target.value, hacky}
+        }else{
+        	updatedWord = {...word, [e.target.name]:e.target.value}
+        }               
+        this.props.updateWord(index, updatedWord);
+
 		this.setState({editing:false});
 	}
 
 	handleChange(index, e){
+		//aktualizace znaků ve slově (při kontrole háčků okamžitě se výrazně zpomalil program)
         const word=this.props.details;
-        const updatedWord = {...word, [e.target.name]:e.target.value}
-        console.log(updatedWord);
-
+        var updatedWord;
+             
         this.props.updateWord(index, updatedWord);
+
     }
 
 
 	displayInput(){
 		const lang=this.props.language;
 		return(
-			<input type="text" value={this.props.details[lang]} name={lang} onBlur={this.disableEditing} onChange={(e) => this.handleChange(this.props.index, e)}  autoFocus/>
+			<input type="text" value={this.props.details[lang]} name={lang} onBlur={(e) => this.disableEditing(this.props.index, e)} onChange={(e) => this.handleChange(this.props.index, e)}  autoFocus/>
 		)
 	}
 

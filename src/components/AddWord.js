@@ -1,21 +1,20 @@
 import React from 'react';
+import {maHacky} from '../helpers';
 
 class AddWord extends React.Component{
 
     createWord(event){
         event.preventDefault();
-        var reg = /[ěščřžýáíéúů]/gi;
+       /* var reg = /[ěščřžýáíéúů]/gi;
         var slovo = this.cz.value;
         var ceskeZnaky = slovo.match(reg);
-        console.log(ceskeZnaky);
-
-        const maHacky= (ceskeZnaky!==null) ? true :false;
-        console.log(maHacky);
+        const maHacky= (ceskeZnaky!==null) ? true :false;*/
+        const diakritika = maHacky(this.cz.value);
 
         const word = {
             cz: this.cz.value,
             en: this.en.value,
-            hacky: maHacky
+            hacky: diakritika
         }
         this.props.addVocabulary(word);
         this.addForm.reset();

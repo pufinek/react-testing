@@ -22,8 +22,7 @@ class App extends React.Component {
 
         this.state = {
             vocabulary: {}, 
-            statistic: {},
-            symbols: "yxcvbnmasdfghjklqwertzuiop,.(){}-;+ěščřžýáíéYXCVBNMASDFGHJKLQWERTZUIOP+ĚŠČŘŽÝÁÍÉ"
+            statistic: {}
         }
 
 
@@ -76,7 +75,7 @@ class App extends React.Component {
         return (
             <div className="container">
 
-            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} />
+            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords}  />
 
             <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} />
 

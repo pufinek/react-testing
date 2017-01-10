@@ -1,7 +1,8 @@
 import React from 'react';
+import {randomZnak, randomZnaky} from '../helpers';
 
-class TestingForm extends React.Component {
-    constructor(){
+class Test extends React.Component {
+  /*  constructor(){
         super();
         this.randomVocabulary = this.randomVocabulary.bind(this);
         this.vocabularyEn = this.vocabularyEn.bind(this);
@@ -35,17 +36,18 @@ class TestingForm extends React.Component {
         ];
         console.log(index);
         return letters[index].en;
-    }
+    }*/
 
     render() {
         return (
             <div className="testing-form" >
-                <h2>Napište slovo: <strong>{this.vocabularyEn(this.randomVocabulary())}</strong></h2>
+                {/*<h2>Napište slovo: <strong>{this.vocabularyEn(this.randomVocabulary())}</strong></h2>
                 <input type="text" required placeholder={this.vocabularyEn(this.randomVocabulary())} />
-                <button type="submit" >Kontrola</button>
+                <button type="submit" >Kontrola</button>*/}
+                <h2>Test</h2>
             </div>
         )
     }
 }
 
-export default TestingForm;
+export default Test;

@@ -2,7 +2,7 @@
   "name": "testing-app",
   "version": "0.0.1",
   "private": true,
-  "homepage":"https://pufinek.github.io/react-testing",
+  "homepage":"https://pufinek.github.io/react-testing/",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-scripts": "0.8.4"

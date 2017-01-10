@@ -2,6 +2,7 @@ import React from 'react';
 import AddWord from '../components/AddWord';
 import Test from '../components/Test';
 
+
 class TestLetters extends React.Component {
     constructor() {
         super();
@@ -9,7 +10,6 @@ class TestLetters extends React.Component {
         this.handleTestOptionChange = this.handleTestOptionChange.bind(this);
 
         this.state = {
-            symbols: "yxcvbnmasdfghjklqwertzuiopěščřžýáíé",
             testRunning:false,
             selectedTestOption: {'testType':'mala', 'testEnd':'chyby'}
         }
@@ -30,6 +30,8 @@ class TestLetters extends React.Component {
 render() {
 return (
 <div className="container">
+
+
     <div className="row">
         <h2>Parametry testu:</h2>
         <form onSubmit={(e) => this.getParametrTest(e)}>
@@ -59,7 +61,7 @@ return (
                     <h3>Ukončení testu</h3>
                     
                     <div className="radio">
-                        <label><input type="radio" value="cas" checked={this.state.selectedTestOption.testEnd === 'cas'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')}  />Časové omezení</label>
+                        <label><input type="radio" value="cas" checked={this.state.selectedTestOption.testEnd === 'cas'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')}  />30 znaků na čas</label>
                     </div>
                     <div className="radio">
                         <label><input type="radio" value="chyby"  checked={this.state.selectedTestOption.testEnd === 'chyby'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')} />Jen 3 chyby</label>
@@ -80,7 +82,7 @@ return (
     <div className="row">
         <div className="col-md-12 testing-form">
             {
-                (this.state.testRunning) ? <Test /> : null
+                (this.state.testRunning) ? <Test selectedTestOption={this.state.selectedTestOption} /> : null
 
             }
         </div>

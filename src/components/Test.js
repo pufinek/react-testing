@@ -1,50 +1,45 @@
 import React from 'react';
-import {randomZnak, randomZnaky} from '../helpers';
+import {randomZnak, random} from '../helpers';
 
 class Test extends React.Component {
-  /*  constructor(){
+    constructor(){
         super();
-        this.randomVocabulary = this.randomVocabulary.bind(this);
-        this.vocabularyEn = this.vocabularyEn.bind(this);
+        this.generovaniZnaku=this.generovaniZnaku.bind(this);
+        this.renderTest=this.renderTest.bind(this);
+
+        this.state = {
+            pismena: "yxcvbnmasdfghjklqwertzuiop",
+            pismenaDiakritika:"yxcvbnmasdfghjklqwertzuiopěščřžýáíé"
+        }
+
     }
 
-    randomVocabulary(){
-        const letters=[
-            {cz:'chlapec', en:'boy', hacky:false},
-            {cz:'fotbal', en:'football', hacky:false},
-            {cz:'překážka', en:'obstruction', hacky:true},
-            {cz:'kniha', en:'book', hacky:false},
-            {cz:'cíl', en:'goal', hacky:false},
-            {cz:'klíč', en:'key', hacky:true}
-        ];
-        const randomIndex=Math.floor(Math.random() * (letters.length-1));
-        console.log(randomIndex);
-        //const enVyraz=letters[randomIndex].en;
-       // console.log(enVyraz);
-        return randomIndex;
+    generovaniZnaku(retezecSeZnaky, velkeBool){
+
+        var znak=randomZnak(retezecSeZnaky);
+        var zvetsit = Math.floor(random(0,2));
+        if(velkeBool && zvetsit===1){ //pokud ma obsahovat i velké, tak náhodně zvětšíme znak, nebo ne
+            znak = znak.toUpperCase();
+        }
+        return znak;
+    }
+
+    renderTest(){
+
+
     }
 
 
-    vocabularyEn(index){
-        const letters=[
-            {cz:'chlapec', en:'boy', hacky:false},
-            {cz:'fotbal', en:'football', hacky:false},
-            {cz:'překážka', en:'obstruction', hacky:true},
-            {cz:'kniha', en:'book', hacky:false},
-            {cz:'cíl', en:'goal', hacky:false},
-            {cz:'klíč', en:'key', hacky:true}
-        ];
-        console.log(index);
-        return letters[index].en;
-    }*/
+
+
+
 
     render() {
         return (
             <div className="testing-form" >
-                {/*<h2>Napište slovo: <strong>{this.vocabularyEn(this.randomVocabulary())}</strong></h2>
-                <input type="text" required placeholder={this.vocabularyEn(this.randomVocabulary())} />
-                <button type="submit" >Kontrola</button>*/}
-                <h2>Test</h2>
+                <h2>Stiskněte klávesu: <strong></strong></h2>
+                <input type="text" required placeholder="" />
+                <button type="submit" onClick={(e) => this.generovaniZnaku(this.state.pismena, true)}>Kontrola</button>
             </div>
         )
     }

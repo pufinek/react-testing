@@ -77,7 +77,7 @@ class App extends React.Component {
 
             <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords}  />
 
-            <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} />
+           {/* <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} />*/}
 
             <div className="row todo-list">
                 <h2>TODO:</h2>
@@ -88,6 +88,9 @@ class App extends React.Component {
                     <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; detekce háčků při editaci a načtení ze souboru</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; mazání položek v databázi</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; kontrola duplicit (nebude)</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; stránkování slovíček</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; filtrování slovíček</li>
+
 
                 </ul>
             </div>

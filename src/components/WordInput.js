@@ -48,7 +48,7 @@ class WordInput extends React.Component{
 	displayInput(){
 		const lang=this.props.language;
 		return(
-			<input type="text" value={this.props.details[lang]} name={lang} onBlur={(e) => this.disableEditing(this.props.index, e)} onChange={(e) => this.handleChange(this.props.index, e)}  autoFocus/>
+			<input type="text"  required value={this.props.details[lang]} name={lang} onBlur={(e) => this.disableEditing(this.props.index, e)} onChange={(e) => this.handleChange(this.props.index, e)}  autoFocus/>
 		)
 	}
 

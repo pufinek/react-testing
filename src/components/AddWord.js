@@ -31,11 +31,11 @@ class AddWord extends React.Component{
 
                 <div className="col-md-6 form-group">
                     <label htmlFor="cz">Česky (CZ):</label>
-                    <input type="text" ref={(input) => this.cz = input} className="form-control" id="cz" />
+                    <input type="text"  required ref={(input) => this.cz = input} className="form-control" id="cz" />
                 </div>
                 <div className="col-md-6 form-group">
                     <label htmlFor="en">Anglicky (EN):</label>
-                    <input type="text" ref={(input) => this.en = input} className="form-control" id="en"/>
+                    <input type="text"  required ref={(input) => this.en = input} className="form-control" id="en"/>
                 </div>
                 <button type="submit" className="btn btn-default">Přidat</button>
             </form>

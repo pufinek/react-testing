@@ -12,7 +12,7 @@ import TestLetters from './components/TestLetters';
 
 const Root = () => {
   return (
-    <BrowserRouter basename="/react-testing/">
+    <BrowserRouter basename="/react-testing">
       <div>
         <Match exactly pattern="/" component={App} />
        	<Match pattern="/testPismena" component={TestLetters}/>

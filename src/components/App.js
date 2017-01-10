@@ -1,11 +1,11 @@
 import React from 'react';
 //import TestingForm from '../components/TestingForm';
 import TestingGuide from '../components/TestingGuide';
-import Statistic from '../components/Statistic';
+//import Statistic from '../components/Statistic';
 import ListOfWords from '../components/ListOfWords';
 //import AddWord from '../components/AddWord';
 import {maHacky} from '../helpers';
-import { Link, Match, Router } from 'react-router';
+//import { Link, Match, Router } from 'react-router';
 import base from '../base';
 import slovickaSoubor from '../slovicka';
 

@@ -3,10 +3,9 @@ import React from 'react';
 import TestingGuide from '../components/TestingGuide';
 import Statistic from '../components/Statistic';
 import ListOfWords from '../components/ListOfWords';
-import AddWord from '../components/AddWord';
+//import AddWord from '../components/AddWord';
 import {maHacky} from '../helpers';
-
-
+import { Link, Match, Router } from 'react-router';
 import base from '../base';
 import slovickaSoubor from '../slovicka';
 
@@ -26,6 +25,8 @@ class App extends React.Component {
             statistic: {},
             symbols: "yxcvbnmasdfghjklqwertzuiop,.(){}-;+ěščřžýáíéYXCVBNMASDFGHJKLQWERTZUIOP+ĚŠČŘŽÝÁÍÉ"
         }
+
+
     }
 
 
@@ -74,27 +75,12 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <TestingGuide />
 
-                    <Statistic />
+            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} />
 
-                    <div className="col-md-4 col-sm-12 addVocabulary-box">
-                        <h2>Přidat slovíčko</h2>
+            <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} />
 
-                            <AddWord addVocabulary={this.addVocabulary}/>
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                <button className="btn btn-primary" onClick={this.loadWords}>Načíst ze souboru</button>
-                            </div>  
-                        </div>
-                    </div>
-                </div>
-
-                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord}/>
-
-                <div className="row todo-list">
+            <div className="row todo-list">
                 <h2>TODO:</h2>
                 <ul>
                     <li><span className="glyphicon glyphicon-ok"></span> &nbsp; detekce českých znaků při řidávání do slovníku</li>
@@ -105,9 +91,7 @@ class App extends React.Component {
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; kontrola duplicit (nebude)</li>
 
                 </ul>
-
-
-                </div>
+            </div>
             </div>
 
         )

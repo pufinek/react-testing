@@ -3,6 +3,7 @@ import {maHacky} from '../helpers';
 
 class AddWord extends React.Component{
 
+
     createWord(event){
         event.preventDefault();
        /* var reg = /[ěščřžýáíéúů]/gi;
@@ -17,6 +18,8 @@ class AddWord extends React.Component{
             hacky: diakritika
         }
         this.props.addVocabulary(word);
+        //alert(`přidáno slovo cz: ${[word.cz]}, en: ${[word.en]}, slovo obsahuje háčky: ${[word.hacky]} `);
+        this.props.showInfo(word.cz, word.en);
         this.addForm.reset();
     }
 
@@ -37,7 +40,7 @@ class AddWord extends React.Component{
                     <label htmlFor="en">Anglicky (EN):</label>
                     <input type="text"  required ref={(input) => this.en = input} className="form-control" id="en"/>
                 </div>
-                <button type="submit" className="btn btn-default">Přidat</button>
+                <button type="submit" className="btn btn-success">Přidat</button>
             </form>
 
 

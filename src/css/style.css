@@ -55,6 +55,7 @@ h3 {
   right: 0;
   bottom: 0;
   padding: 5px;
+  cursor: pointer;
 }
 .vocabulary-list li input[type=text] {
   padding: 5px;

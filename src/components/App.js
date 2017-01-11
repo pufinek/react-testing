@@ -17,6 +17,7 @@ class App extends React.Component {
 
         this.addVocabulary = this.addVocabulary.bind(this);
         this.updateWord = this.updateWord.bind(this);
+        this.removeWord = this.removeWord.bind(this);
         this.loadWords = this.loadWords.bind(this);
         this.addToVocabulary=this.addToVocabulary.bind(this);
 
@@ -55,6 +56,13 @@ class App extends React.Component {
 
     }
 
+    removeWord(key){
+       const vocabulary={...this.state.vocabulary};
+       vocabulary[key]=null;
+       this.setState({vocabulary});
+
+    }
+
     loadWords(){
         Object.keys(slovickaSoubor).map((key) => this.addToVocabulary(slovickaSoubor[key].cz, slovickaSoubor[key].en)) 
     }
@@ -77,7 +85,7 @@ class App extends React.Component {
 
             <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords}  />
 
-           {/* <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} />*/}
+           {/**/} <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord} />
 
             <div className="row todo-list">
                 <h2>TODO:</h2>
@@ -86,10 +94,14 @@ class App extends React.Component {
                     <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; editace položek v databázi</li>
                     <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; načtení slovíček ze souboru</li>
                     <li> <span className="glyphicon glyphicon-ok" ></span> &nbsp; detekce háčků při editaci a načtení ze souboru</li>
-                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; mazání položek v databázi</li>
+                    <li> <span className="glyphicon glyphicon-ok"></span> &nbsp; mazání položek v databázi</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; kontrola duplicit (nebude)</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; stránkování slovíček</li>
                     <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; filtrování slovíček</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; Firebase háže chybu pri editaci - seká se to</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; zlepšit routování - children?</li>
+                    <li> <span className="glyphicon glyphicon-remove"></span> &nbsp; při načítání výpisu gif s loadingem</li>
+                    <li> <span className="glyphicon glyphicon-ok"></span> &nbsp; po přidání slovíčka zobrazit hlášku</li>
 
 
                 </ul>

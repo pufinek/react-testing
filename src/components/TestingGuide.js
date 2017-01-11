@@ -4,7 +4,31 @@ import AddWord from '../components/AddWord';
 import Statistic from '../components/Statistic';
 
 class TestingGuide extends React.Component {
+        constructor(){
+        super();
+        this.showInfo= this.showInfo.bind(this);
+
+        this.state={
+            showInfo:false,
+            newCz:'',
+            newEn:''
+        }
+
+    }
+
+    showInfo(cz, en){
+        this.setState({showInfo:true, newCz:cz, newEn:en});
+        setTimeout(function(){
+                this.setState({showInfo:false})
+            }.bind(this),
+            3000);
+        
+
+    }
+
+
     render() {
+
         return (
                 <div className="row">
                     <div className="col-md-4 col-sm-6 testingGuide">
@@ -27,11 +51,15 @@ class TestingGuide extends React.Component {
                 <div className="col-md-4 col-sm-12 addVocabulary-box">
                     <h2>Přidat slovíčko</h2>
 
-                    <AddWord addVocabulary={this.props.addVocabulary}/>
+                    <AddWord addVocabulary={this.props.addVocabulary} showInfo={this.showInfo}/>
+                    <p>{this.state.showInfo ? `Přidáno nové slovíčko ${[this.state.newCz]} / ${[this.state.newEn]}` : ''}</p>
 
                     <div className="row">
                         <div className="col-md-12">
-                            <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
+                           {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
+
+                            nothing to upload
+                          */}
                         </div>  
                     </div>
                 </div>

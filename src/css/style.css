@@ -68,10 +68,16 @@ h3 {
 .todo-list ul {
   list-style: none;
 }
-.glyphicon-ok {
+.glyphicon-ok,
+.text-green {
   color: green;
 }
-.glyphicon-remove {
+.glyphicon-remove,
+.text-red {
   color: #ab1d22;
+}
+.actualLetter {
+  font-size: 50px;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

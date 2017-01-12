@@ -33,6 +33,7 @@ return (
 
 
     <div className="row">
+    <div className="col-md-12">
         <h2>Parametry testu:</h2>
         <form onSubmit={(e) => this.getParametrTest(e)}>
             <div className="row">
@@ -78,6 +79,7 @@ return (
         {/*<p>počet znaků: {this.state.symbols.length}</p>
         <p>jeden náhodný znak: {randomZnak(this.state.symbols)}</p>
         <p>5 náhodný znak: {randomZnaky(this.state.symbols, 5)}</p>*/}
+    </div>
     </div>
     <div className="row">
         <div className="col-md-12 testing-form">

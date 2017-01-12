@@ -22,8 +22,11 @@ h3{
 }
 
 @media screen and (min-width:992px ) {
-	width: 100%;
-	max-width: 1240px;
+	.container{
+		width: 100%;
+		max-width: 1240px;
+	}
+
 }
 
 .testingGuide{
@@ -89,4 +92,59 @@ h3{
 .actualLetter {
   font-size: 50px;
   text-align: center;
+	font-family: monospace;
+	display: block;
+	width: 100%;
+}
+.shake{
+
+	-webkit-animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	-moz-animation:shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	-moz-animation:shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+
+	-ms-transform:translate3d(0, 0, 0);
+	-webkit-transform:translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+@keyframes shake {
+	10%, 90% {
+		-ms-transform:translate3d(-1px, 0, 0);
+		-webkit-transform:translate3d(-1px, 0, 0);
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%, 80% {
+
+		-ms-transform:translate3d(2px, 0, 0);
+		-webkit-transform:translate3d(2px, 0, 0);
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		-ms-transform:translate3d(-4px, 0, 0);
+		-webkit-transform:translate3d(-4px, 0, 0);
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%, 60% {
+		-ms-transform:translate3d(4px, 0, 0);
+		-webkit-transform:translate3d(4px, 0, 0);
+		transform: translate3d(4px, 0, 0);
+	}
+}
+#allWrittenLetters{
+	font-family: monospace;
+	min-height: 2.5em;
+	font-size: 16px;
+	background-color: lightgray;
+	border: 1px solid @gray;
+	span{
+		color:@red;
+		font-weight: 900;
+	}
 }

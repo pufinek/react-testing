@@ -8,10 +8,11 @@ class TestLetters extends React.Component {
         super();
         this.getParametrTest = this.getParametrTest.bind(this);
         this.handleTestOptionChange = this.handleTestOptionChange.bind(this);
+        this.endTest = this.endTest.bind(this);
 
         this.state = {
             testRunning:false,
-            selectedTestOption: {'testType':'mala', 'testEnd':'chyby'}
+            selectedTestOption: {'testType':'mala', 'testEnd':'nekonecno'}
         }
     }
 
@@ -24,6 +25,11 @@ class TestLetters extends React.Component {
     getParametrTest(event){
         event.preventDefault();
         this.setState({testRunning:true})
+    }
+
+    endTest(event){
+        event.preventDefault();
+        this.setState({testRunning:false})
     }
 
 
@@ -46,7 +52,7 @@ return (
                     </div>
                     <div className="radio"><label>
                         <input type="radio" value="velka" checked={this.state.selectedTestOption.testType === 'velka'} onChange={(e) => this.handleTestOptionChange(e, 'testType')} />
-                        Velká písmena (A B C) </label>
+                        Velká písmena (a A b B) </label>
                     </div>
                     <div className="radio"><label>
                         <input type="radio" value="malaDiakritika" checked={this.state.selectedTestOption.testType === 'malaDiakritika'} onChange={(e) => this.handleTestOptionChange(e, 'testType')}/>
@@ -73,7 +79,7 @@ return (
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-primary">Start</button>
+            <button type="submit" className={this.state.testRunning ? 'btn btn-primary disabled' : 'btn btn-primary'} >Start</button>
         </form>
        
         {/*<p>počet znaků: {this.state.symbols.length}</p>
@@ -84,7 +90,12 @@ return (
     <div className="row">
         <div className="col-md-12 testing-form">
             {
-                (this.state.testRunning) ? <Test selectedTestOption={this.state.selectedTestOption} /> : null
+                (this.state.testRunning) ? 
+
+                <div><Test selectedTestOption={this.state.selectedTestOption} /> <br />
+                <button type="submit" onClick={this.endTest} className="btn btn-warning" >Ukončit test</button></div>
+                : 
+                null
 
             }
         </div>

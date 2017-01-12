@@ -6,6 +6,7 @@ class Test extends React.Component {
         super();
         this.generovaniZnaku=this.generovaniZnaku.bind(this);
         this.renderTest=this.renderTest.bind(this);
+        this.generovaniZnakuZvolenehoTestu = this.generovaniZnakuZvolenehoTestu.bind(this);
 
         this.state = {
             pismena: "yxcvbnmasdfghjklqwertzuiop",
@@ -28,6 +29,20 @@ class Test extends React.Component {
         }
         this.setState({aktualLetter:znak});
         //return znak;
+    }
+
+    generovaniZnakuZvolenehoTestu(){
+        var znaky=this.state.pismena; //univerzálně používám bez diakritiky
+        var velkaPismena = false; //univerzálně používám malá písmena
+        //toto nastaveni odpovida case 'mala' pro 'selectedTestOption.testType'
+        switch(this.props.selectedTestOption.testType){
+            case 'velka': velkaPismena=true; break;
+            case 'malaDiakritika': znaky = this.state.pismenaDiakritika; break;
+            case 'vse':  velkaPismena=true; znaky = this.state.pismenaDiakritika;
+        }
+        this.generovaniZnaku(znaky, velkaPismena);
+
+
     }
 
     unShake(){
@@ -53,7 +68,8 @@ class Test extends React.Component {
         this.setState({statisticTest});
         this.writtenLetter.value="";
        
-        this.generovaniZnaku(this.state.pismena, true);
+        //this.generovaniZnaku(this.state.pismena, true);
+        this.generovaniZnakuZvolenehoTestu()
 
 
        // setTimeout(this.generovaniZnaku(this.state.pismena, true), 2000).bind(this);  

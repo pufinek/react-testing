@@ -84,6 +84,7 @@ h3 {
   font-family: monospace;
   display: block;
   width: 100%;
+  padding: 15px 0;
 }
 .shake {
   -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
@@ -124,7 +125,7 @@ h3 {
 }
 #allWrittenLetters {
   font-family: monospace;
-  min-height: 2.5em;
+  min-height: 5.5em;
   font-size: 16px;
   background-color: lightgray;
   border: 1px solid gray;

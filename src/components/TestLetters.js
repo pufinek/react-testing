@@ -71,7 +71,7 @@ return (
                         <label><input type="radio" value="cas" checked={this.state.selectedTestOption.testEnd === 'cas'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')}  />30 znaků na čas</label>
                     </div>
                     <div className="radio">
-                        <label><input type="radio" value="chyby"  checked={this.state.selectedTestOption.testEnd === 'chyby'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')} />Jen 3 chyby</label>
+                        <label><input type="radio" value="chyby"  checked={this.state.selectedTestOption.testEnd === 'chyby'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')} />Max 5 chyb</label>
                     </div>
                     <div className="radio">
                         <label><input type="radio" value="nekonecno" checked={this.state.selectedTestOption.testEnd === 'nekonecno'}  onChange={(e) => this.handleTestOptionChange(e, 'testEnd')}  />Nekonečný cyklus</label>
@@ -92,7 +92,7 @@ return (
             {
                 (this.state.testRunning) ? 
 
-                <div><Test selectedTestOption={this.state.selectedTestOption} /> <br />
+                <div><Test  selectedTestOption={this.state.selectedTestOption}/> <br />
                 <button type="submit" onClick={this.endTest} className="btn btn-warning" >Ukončit test</button></div>
                 : 
                 null

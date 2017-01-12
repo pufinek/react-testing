@@ -1,5 +1,9 @@
 import React from 'react';
 import {randomZnak, random} from '../helpers';
+import TestInput from './TestInput';
+import TestWrittenSymbols from './TestWrittenSymbols';
+import TestActiveStatistic from './TestActiveStatistic';
+
 
 class Test extends React.Component {
     constructor(){
@@ -7,6 +11,7 @@ class Test extends React.Component {
         this.generovaniZnaku=this.generovaniZnaku.bind(this);
         this.renderTest=this.renderTest.bind(this);
         this.generovaniZnakuZvolenehoTestu = this.generovaniZnakuZvolenehoTestu.bind(this);
+        this.konecTestu=this.konecTestu.bind(this);
 
         this.state = {
             pismena: "yxcvbnmasdfghjklqwertzuiop",
@@ -15,7 +20,10 @@ class Test extends React.Component {
             statisticTest:{
                 ok:0,
                 miss:0
-            }
+            },
+            showLastStatistic:false,
+            startTestu:new Date().toLocaleTimeString()
+            //startTestu:Date.now()
         }
 
 
@@ -38,7 +46,8 @@ class Test extends React.Component {
         switch(this.props.selectedTestOption.testType){
             case 'velka': velkaPismena=true; break;
             case 'malaDiakritika': znaky = this.state.pismenaDiakritika; break;
-            case 'vse':  velkaPismena=true; znaky = this.state.pismenaDiakritika;
+            case 'vse':  velkaPismena=true; znaky = this.state.pismenaDiakritika; break;
+            default:znaky=this.state.pismena; velkaPismena = false;
         }
         this.generovaniZnaku(znaky, velkaPismena);
 
@@ -49,8 +58,8 @@ class Test extends React.Component {
        document.getElementById('actualLetter').classList.remove('shake');
     }
 
-    renderTest(e){
-        var writtenLetter=e.target.value;
+    renderTest(writtenletter){
+        var writtenLetter=writtenletter;
         const statisticTest={...this.state.statisticTest};
         
         if(writtenLetter === this.state.aktualLetter){
@@ -59,20 +68,26 @@ class Test extends React.Component {
         }
         else{
            statisticTest.miss++;
-           document.getElementById('allWrittenLetters').innerHTML+=writtenLetter+`<span>(${[this.state.aktualLetter]})</span>`+" ";
+           document.getElementById('allWrittenLetters').innerHTML+=writtenLetter+`<span>(${[this.state.aktualLetter]})</span> `;
            document.getElementById('actualLetter').classList.add('shake');
            setTimeout(this.unShake, 500);
-           
+
+           if(this.props.selectedTestOption.testEnd === 'chyby'  && statisticTest.miss === 5){
+               console.log('provedeno 5 chyb');  //xjb
+               this.konecTestu();
+           }
+         
 
         }
         this.setState({statisticTest});
-        this.writtenLetter.value="";
        
         //this.generovaniZnaku(this.state.pismena, true);
         this.generovaniZnakuZvolenehoTestu()
+    }
 
-
-       // setTimeout(this.generovaniZnaku(this.state.pismena, true), 2000).bind(this);  
+    konecTestu(){
+       this.setState({showLastStatistic:true});
+       console.log("koenc testu"); //xjb
     }
 
 
@@ -85,33 +100,13 @@ class Test extends React.Component {
 
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <input type="text" 
-                            placeholder={this.state.aktualLetter} 
-                            className="actualLetter col-md-12" 
-                            ref={(input) => this.writtenLetter = (input)} 
-                            onChange={(e) => this.renderTest(e)}
-                            id="actualLetter"
-                             />
-                         
-                         <div id="allWrittenLetters" className="col-md-12">
-                         Zapsaná písmena:
-                        </div>
+                        <TestInput aktualLetter={this.state.aktualLetter} renderTest={this.renderTest} />
+                        <TestWrittenSymbols />
                     </div>
 
-                    <div className="col-md-6 col-sm-12 statisticTest">
-                        <h3>Průběh testu:</h3> 
-                        <table className="table">
-                            <tbody>
-                            <tr >
-                                <td className="text-green">Správně: </td>
-                                <td className="text-green">{this.state.statisticTest.ok}</td>
-                                <td className="text-red">Špatně: </td>
-                                <td className="text-red">{this.state.statisticTest.miss}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <TestActiveStatistic statisticTest={this.state.statisticTest} startTestu={this.state.startTestu}/>
                 </div>
+
             </div>
         )
     }

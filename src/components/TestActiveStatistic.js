@@ -1,27 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Timer from './Timer';
+
 
 class TestActiveStatistic extends React.Component{
-	constructor(){
-		super();
-		this.tick = this.tick.bind(this);
-	}
-
-
-    tick(){
-    	const now=new Date().toLocaleTimeString();
-    	//const now=Date.now();
-    	//const timeSpent= new Date().setMilliseconds(Date.now() - this.props.startTestu);
-        const element = (
-    		<span>
-      			{now}
-    		</span>
-  		);
-  		render(
-    		element,
-    		document.getElementById('cas')
-  		);
-    }
 
 	render(){
 		var uspesnost = (this.props.statisticTest.ok / (this.props.statisticTest.ok+this.props.statisticTest.miss))*100;
@@ -49,11 +31,12 @@ class TestActiveStatistic extends React.Component{
                             	<tr>              
                             		<td colSpan="2">Start testu:</td>
                             		{/*<td colSpan="2">{this.props.startTestu}</td>*/}
-                            		<td colSpan="2">{this.props.startTestu}</td>
+                            		<td colSpan="2">{this.props.startTestuString}</td>
                             	</tr>
+
                             	<tr>              
                             		<td colSpan="2">Trvání testu:</td>
-                            		<td colSpan="2" id="cas"></td>
+                            		<td colSpan="2" ><Timer endTest={this.props.endTest} testRunning={this.props.testRunning} trvaniTestu={this.props.trvaniTestu} /></td>
                             	</tr>
 
                             </tfoot>

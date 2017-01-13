@@ -134,3 +134,6 @@ h3 {
   color: #ab1d22;
   font-weight: 900;
 }
+.statisticTest tfoot td {
+  width: 50%;
+}

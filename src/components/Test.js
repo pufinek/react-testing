@@ -11,7 +11,7 @@ class Test extends React.Component {
         this.generovaniZnaku=this.generovaniZnaku.bind(this);
         this.renderTest=this.renderTest.bind(this);
         this.generovaniZnakuZvolenehoTestu = this.generovaniZnakuZvolenehoTestu.bind(this);
-        this.konecTestu=this.konecTestu.bind(this);
+        this.trvaniTestu=this.trvaniTestu.bind(this);
 
         this.state = {
             pismena: "yxcvbnmasdfghjklqwertzuiop",
@@ -22,11 +22,14 @@ class Test extends React.Component {
                 miss:0
             },
             showLastStatistic:false,
-            startTestu:new Date().toLocaleTimeString()
-            //startTestu:Date.now()
+            startTestuString:new Date().toLocaleTimeString(),
+            trvaniTestu:0,
+            testRunning:true
         }
+    }
 
-
+    trvaniTestu(trvani){
+        this.setState({trvaniTestu:trvani, testRunning:false});
     }
 
     generovaniZnaku(retezecSeZnaky, velkeBool){
@@ -61,7 +64,7 @@ class Test extends React.Component {
     renderTest(writtenletter){
         var writtenLetter=writtenletter;
         const statisticTest={...this.state.statisticTest};
-        
+       
         if(writtenLetter === this.state.aktualLetter){
             statisticTest.ok++;
             document.getElementById('allWrittenLetters').innerHTML+=writtenLetter+" ";
@@ -75,19 +78,24 @@ class Test extends React.Component {
            if(this.props.selectedTestOption.testEnd === 'chyby'  && statisticTest.miss === 5){
                console.log('provedeno 5 chyb');  //xjb
                this.konecTestu();
-           }
-         
+           }         
 
         }
         this.setState({statisticTest});
+        const znakyCelkem = statisticTest.miss+statisticTest.ok;
+
+        if(this.props.selectedTestOption.testEnd === 'cas'  && znakyCelkem === 30){
+               console.log('zapsano 30 znků');  //xjb
+               this.konecTestu();
+        }
        
         //this.generovaniZnaku(this.state.pismena, true);
         this.generovaniZnakuZvolenehoTestu()
     }
 
-    konecTestu(){
-       this.setState({showLastStatistic:true});
-       console.log("koenc testu"); //xjb
+    konecTestu(){        
+        this.setState({testRunning:false});
+       console.log("konec testu"); //xjb
     }
 
 
@@ -100,11 +108,11 @@ class Test extends React.Component {
 
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <TestInput aktualLetter={this.state.aktualLetter} renderTest={this.renderTest} />
+                        <TestInput aktualLetter={this.state.aktualLetter} renderTest={this.renderTest} testRunning={this.state.testRunning} />
                         <TestWrittenSymbols />
                     </div>
 
-                    <TestActiveStatistic statisticTest={this.state.statisticTest} startTestu={this.state.startTestu}/>
+                    <TestActiveStatistic statisticTest={this.state.statisticTest} testRunning={this.state.testRunning} startTestuString={this.state.startTestuString} trvaniTestu={this.trvaniTestu}/>
                 </div>
 
             </div>

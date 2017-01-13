@@ -11,7 +11,7 @@ class TestLetters extends React.Component {
         this.endTest = this.endTest.bind(this);
 
         this.state = {
-            testRunning:false,
+            testShow:false,
             selectedTestOption: {'testType':'mala', 'testEnd':'nekonecno'}
         }
     }
@@ -24,12 +24,11 @@ class TestLetters extends React.Component {
 
     getParametrTest(event){
         event.preventDefault();
-        this.setState({testRunning:true})
+        this.setState({testShow:true})
     }
 
-    endTest(event){
-        event.preventDefault();
-        this.setState({testRunning:false})
+    endTest(){
+        this.setState({testShow:false})
     }
 
 
@@ -78,9 +77,9 @@ return (
                     </div>
                 </div>
             </div>
+            <button type="submit" className={this.state.testShow ? 'btn btn-primary disabled' : 'btn btn-primary'} >Start</button>
 
-            <button type="submit" className={this.state.testRunning ? 'btn btn-primary disabled' : 'btn btn-primary'} >Start</button>
-        </form>
+            </form>
        
         {/*<p>počet znaků: {this.state.symbols.length}</p>
         <p>jeden náhodný znak: {randomZnak(this.state.symbols)}</p>
@@ -90,12 +89,20 @@ return (
     <div className="row">
         <div className="col-md-12 testing-form">
             {
-                (this.state.testRunning) ? 
+                (this.state.testShow) ? 
 
-                <div><Test  selectedTestOption={this.state.selectedTestOption}/> <br />
-                <button type="submit" onClick={this.endTest} className="btn btn-warning" >Ukončit test</button></div>
-                : 
-                null
+                (<div><Test selectedTestOption={this.state.selectedTestOption}/> 
+                      <button type="submit" onClick={this.endTest} className="btn btn-warning" >Reset</button>
+                    </div>): null
+
+
+
+                 /* ? 
+
+                <Test  selectedTestOption={this.state.selectedTestOption}/> <br />
+               <button type="submit" onClick={this.endTest} className="btn btn-warning" >Restart</button></div>
+                :
+                null*/
 
             }
         </div>

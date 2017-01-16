@@ -17,7 +17,6 @@ class Timer extends React.Component{
 		      isStart: true,
           elapsed: 0,
           diff: 0,
-          laps: [],
 		}
 	}
   componentWillUnmount(){
@@ -73,7 +72,6 @@ class Timer extends React.Component{
           isStart: false,
           elapsed: 0,
           diff: 0,
-          laps: [],
         });
       }
 

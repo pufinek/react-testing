@@ -1,6 +1,7 @@
 import React from 'react';
-import AddWord from '../components/AddWord';
+//import AddWord from '../components/AddWord';
 import Test from '../components/Test';
+import {Link} from 'react-router';
 
 
 class TestLetters extends React.Component {
@@ -77,9 +78,11 @@ return (
                     </div>
                 </div>
             </div>
-            <button type="submit" className={this.state.testShow ? 'btn btn-primary disabled' : 'btn btn-primary'} >Start</button>
 
+            <button type="submit" className={this.state.testShow ? 'btn btn-primary disabled' : 'btn btn-primary'} >Start</button>
+            &nbsp;&nbsp;<Link to="/">Zpět na úvod</Link> 
             </form>
+            
        
         {/*<p>počet znaků: {this.state.symbols.length}</p>
         <p>jeden náhodný znak: {randomZnak(this.state.symbols)}</p>
@@ -106,7 +109,6 @@ return (
 
             }
         </div>
-
     </div>
 </div>
 )

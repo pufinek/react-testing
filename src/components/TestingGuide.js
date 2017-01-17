@@ -45,7 +45,7 @@ class TestingGuide extends React.Component {
                             <Link className="col-md-8 col-md-offset-2 btn btn-danger" to="/testSlovicka">Procvičování slovíček
                             </Link>
                         </div>*/}
-                        <button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20}} onClick={()=> this.props.switchShowAllWords(true)}>
+                        <button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20, marginBottom:0}} onClick={()=> this.props.switchShowAllWords(true)}>
                             Zobraz všechna slovíčka
                         </button>
                     </div>

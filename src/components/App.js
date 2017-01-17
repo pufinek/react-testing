@@ -65,25 +65,11 @@ class App extends React.Component {
 
     }
 
-    removeWord(key, modVyukySlovicek){
-        if(modVyukySlovicek){
-            //vymazeme z vyuky
-            console.log("smazano z vyuky");
-            const usedWordsStudy={...this.state.usedWordsStudy};
-            usedWordsStudy[key]=null;
-            this.setState({usedWordsStudy});
-        }
-        else{
-            //vymazeme z vyuky i celeho slovniku
-            console.log("smazano z vyuky i slovniku");
+    removeWord(key){
+
             const vocabulary={...this.state.vocabulary};
             vocabulary[key]=null;
-             const usedWordsStudy={...this.state.usedWordsStudy};
-            usedWordsStudy[key]=null;
-            this.setState({vocabulary, usedWordsStudy});
-        }
-      
-
+            this.setState({vocabulary}); 
     }
     switchShowAllWords(bool){
         //var show = !this.state.showAllWords;

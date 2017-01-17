@@ -71,10 +71,9 @@ class StudyVocabulary extends React.Component{
         return(
             <div className="col-md-4 col-sm-6 statistic">
                 <h2>Výuka slovíček</h2>
-                <button onClick={(e) => this.generateWord(e)} >Další &nbsp;>></button>
-				<div style={{fontSize:20, fontWeight:'bold'}}><br />{this.state.actualWord.cz}<br /> = <br /> {this.state.actualWord.en}</div>
-				<button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20 }} onClick={(e) => this.random10Words(e)}>Přidej náhodně 10 slov</button>
-				
+                <button className="btn" onClick={(e) => this.generateWord(e)} >Další &nbsp;>></button>
+				<div style={{fontSize:19, fontWeight:'bold', marginTop:5}}>{this.state.actualWord.cz}<br /> = <br /> {this.state.actualWord.en}</div>
+				<div  style={{position:'absolute', bottom:20, right:20 }}><button className="btn" onClick={() => this.props.switchShowAllWords(false)}>Zobraz vyučovaná</button>&nbsp;<button className="btn btn-warning" onClick={(e) => this.random10Words(e)}>Přidej náhodně 10 slov</button></div>
             </div>
         )
     }

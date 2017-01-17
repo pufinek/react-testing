@@ -14,7 +14,8 @@ class Word extends React.Component{
 
                 <WordInput details={word} language="cz" index={this.props.index} updateWord={this.props.updateWord}/>
                 <WordInput  details={word} language="en" index={this.props.index} updateWord={this.props.updateWord}/>
-                <span className="cross" onClick={() => this.props.removeWord(this.props.index, this.props.vyuka)} >x</span>
+                { (!this.props.vyuka) ? <span className="cross" onClick={() => this.props.removeWord(this.props.index)}>x</span> : null}
+                {/*mazani položky neni možne pri studiu, jen v celém seznamu slovíček*/}
 
             </li>
             : null

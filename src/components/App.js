@@ -20,16 +20,19 @@ class App extends React.Component {
         this.removeWord = this.removeWord.bind(this);
         this.loadWords = this.loadWords.bind(this);
         this.addToVocabulary=this.addToVocabulary.bind(this);
+        this.addUsedWordsStudy=this.addUsedWordsStudy.bind(this);
 
         this.state = {
             vocabulary: {}, 
-            statistic: {}
+            usedWordsStudy: {}
         }
 
 
     }
 
-
+    addUsedWordsStudy(newWordArray) {
+        this.setState({usedWordsStudy:newWordArray});
+    }
 
     addVocabulary(Word) {
         const vocabulary = {...this.state.vocabulary};
@@ -83,11 +86,11 @@ class App extends React.Component {
         return (
             <div className="container">
 
-            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords}  />
+            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} />
 
-           {/**/} <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord} />
+        <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord} />
 
-            <div className="row todo-list">
+              {/*  <div className="row todo-list">
                 <h2>TODO:</h2>
                 <ul>
                     <li><span className="glyphicon glyphicon-ok"></span> &nbsp; detekce českých znaků při řidávání do slovníku</li>
@@ -105,7 +108,7 @@ class App extends React.Component {
 
 
                 </ul>
-            </div>
+            </div>*/}
             </div>
 
         )

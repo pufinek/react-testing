@@ -23,5 +23,5 @@ export function randomZnaky(retezec, pocet){
 }
 
 export function random(min, max){ //vcetne min a bez max
-	     return Math.random() * (max - min) + min;
+	     return Math.floor(Math.random() * (max - min) + min);
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import Word from '../components/Word';
 
-
 class ListOfWords extends React.Component{
     constructor(){
         super();

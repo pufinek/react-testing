@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import AddWord from '../components/AddWord';
-import Statistic from '../components/Statistic';
-import StopWatch from '../components/StopWatch';
+import AddWord from './AddWord';
+import StudyVocabulary from './StudyVocabulary';
+import StopWatch from './StopWatch';
 
 class TestingGuide extends React.Component {
         constructor(){
@@ -38,16 +38,16 @@ class TestingGuide extends React.Component {
                         <div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-primary" to="/testPismena">Procvičování písmen</Link>
                         </div>
-                        {/* <div className="row">
+                      <div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-success" to="/vyuka">Výuka slovíček</Link>
                         </div>
-                        <div className="row">
+                           {/*<div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-danger" to="/testSlovicka">Procvičování slovíček
                             </Link>
                         </div>*/}
                     </div>
 
-                 <Statistic />
+                 <StudyVocabulary vocabulary={this.props.vocabulary} />
                     {/*<StopWatch />*/}
 
                 <div className="col-md-4 col-sm-12 addVocabulary-box">

@@ -39,7 +39,12 @@ class App extends React.Component {
         const timestamp = Date.now();
 
         vocabulary[`key-${timestamp}`] = Word;
-        this.setState({vocabulary});
+
+        //přidávíme i do procvičovaných slovíček
+        const usedWordsStudy = {...this.state.usedWordsStudy};
+        usedWordsStudy[`key-${timestamp}`] = Word;
+
+        this.setState({vocabulary,usedWordsStudy});
     }
 
      addToVocabulary(cz, en) {  //only for load from file .json
@@ -88,9 +93,11 @@ class App extends React.Component {
 
             <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} />
 
-        <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord} />
 
-              {/*  <div className="row todo-list">
+            <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" />
+            {/*<ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi"  />
+
+                <div className="row todo-list">
                 <h2>TODO:</h2>
                 <ul>
                     <li><span className="glyphicon glyphicon-ok"></span> &nbsp; detekce českých znaků při řidávání do slovníku</li>

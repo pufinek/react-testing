@@ -33,21 +33,21 @@ class TestingGuide extends React.Component {
         return (
                 <div className="row">
                     <div className="col-md-4 col-sm-6 testingGuide">
-                        <h2>TestingGuide</h2>
+                        <h2>Psaní všema 10</h2>
                         <h3>Zvolte si typ testu</h3>
                         <div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-primary" to="/testPismena">Procvičování písmen</Link>
                         </div>
-                      <div className="row">
+                       {/*<div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-success" to="/vyuka">Výuka slovíček</Link>
                         </div>
-                           {/*<div className="row">
+                          <div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-danger" to="/testSlovicka">Procvičování slovíček
                             </Link>
                         </div>*/}
                     </div>
 
-                 <StudyVocabulary vocabulary={this.props.vocabulary} />
+                 <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} />
                     {/*<StopWatch />*/}
 
                 <div className="col-md-4 col-sm-12 addVocabulary-box">

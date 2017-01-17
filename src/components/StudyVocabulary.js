@@ -34,7 +34,7 @@ class StudyVocabulary extends React.Component{
 		usedWords[actualWordKey] = this.props.vocabulary[actualWordKey];
 		var actualWord = this.props.vocabulary[actualWordKey];
 		actualWord.miss = 0;  //kolik chyb
-		console.log(actualWord);
+		//console.log(actualWord);
 		this.props.addUsedWordsStudy(usedWords);
 		this.setState({actualWordKey:actualWordKey, actualWord});
 		this.props.switchShowAllWords(false);
@@ -49,7 +49,7 @@ class StudyVocabulary extends React.Component{
 			//console.log(i);
 			var nahodnyIndex = random(0, keyArray.length);  //cislo 0-600
 			var actualWordKey = keyArray[nahodnyIndex]; //key-14515655
-			console.log(actualWordKey);
+			//console.log(actualWordKey);
 			usedWords[actualWordKey] = this.props.vocabulary[actualWordKey];
 			var actualWord = this.props.vocabulary[actualWordKey];
 			actualWord.miss = 0;  //kolik chyb

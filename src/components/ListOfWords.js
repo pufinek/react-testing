@@ -22,15 +22,22 @@ class ListOfWords extends React.Component{
 
                     <div style={{marginBottom:20}}>
                         Filtr: <input type="text" ref={(input) => this.filtr =(input)} className="" onChange={() => this.handleChangeFiltr()} />
-                        <button className="btn btn-danger disabled"  style={{marginLeft:20}}>Procvičit slovíčka</button>
+                        {
+                        (Object.values(this.props.vocabulary).length>=5) ? <button className="btn btn-danger"  style={{marginLeft:20}}>Procvičit slovíčka</button> : <button className="btn btn-danger disabled" title="minimum k procvičování je 5 slovíček"  style={{marginLeft:20}}>Procvičit slovíčka</button>
+                        }
+                        
 
                     </div>
+                    <div><p>Počet slovíček: <strong style={{fontSize:16, color:'red'}}>{Object.values(this.props.vocabulary).length}</strong>
+                        {
+                        (Object.values(this.props.vocabulary).length===0) ? ` (Slovíčka z databáze projdete nahoře v části v VÝUKOU)` : null
+                        }</p></div>
 
                     <ul className="vocabulary-list">
                         {
                             Object
                                 .keys(this.props.vocabulary)
-                                .map(key => <Word key={key} index={key} details={this.props.vocabulary[key]} filtr={this.state.searching} updateWord={this.props.updateWord} removeWord={this.props.removeWord}/>)
+                                .map(key => <Word key={key} index={key} details={this.props.vocabulary[key]} filtr={this.state.searching} updateWord={this.props.updateWord} removeWord={this.props.removeWord} vyuka={this.props.vyuka}/>)
                         }
                     </ul>
                 </div>

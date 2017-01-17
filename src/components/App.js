@@ -65,10 +65,24 @@ class App extends React.Component {
 
     }
 
-    removeWord(key){
-       const vocabulary={...this.state.vocabulary};
-       vocabulary[key]=null;
-       this.setState({vocabulary});
+    removeWord(key, modVyukySlovicek){
+        if(modVyukySlovicek){
+            //vymazeme z vyuky
+            console.log("smazano z vyuky");
+            const usedWordsStudy={...this.state.usedWordsStudy};
+            usedWordsStudy[key]=null;
+            this.setState({usedWordsStudy});
+        }
+        else{
+            //vymazeme z vyuky i celeho slovniku
+            console.log("smazano z vyuky i slovniku");
+            const vocabulary={...this.state.vocabulary};
+            vocabulary[key]=null;
+             const usedWordsStudy={...this.state.usedWordsStudy};
+            usedWordsStudy[key]=null;
+            this.setState({vocabulary, usedWordsStudy});
+        }
+      
 
     }
     switchShowAllWords(bool){
@@ -100,9 +114,9 @@ class App extends React.Component {
 
             {
                 (this.state.showAllWords) ?
-                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi"  />
+                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi" vyuka={false}  />
                 :
-                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" />
+                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" vyuka={true} />
 
             }
             {/*

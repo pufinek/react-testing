@@ -33,8 +33,8 @@ class TestingGuide extends React.Component {
         return (
                 <div className="row">
                     <div className="col-md-4 col-sm-6 testingGuide">
-                        <h2>Psaní všema 10</h2>
-                        <h3>Zvolte si typ testu</h3>
+                        <h2>Rozcestníček</h2>
+                        <h4>Psaní všema 10</h4>
                         <div className="row">
                             <Link className="col-md-8 col-md-offset-2 btn btn-primary" to="/testPismena">Procvičování písmen</Link>
                         </div>
@@ -45,9 +45,12 @@ class TestingGuide extends React.Component {
                             <Link className="col-md-8 col-md-offset-2 btn btn-danger" to="/testSlovicka">Procvičování slovíček
                             </Link>
                         </div>*/}
-                        <button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20, marginBottom:0}} onClick={()=> this.props.switchShowAllWords(true)}>
+                        <div className="row">
+                        <h4>Databáze slovíček</h4>
+                        <button className="col-md-8 col-md-offset-2 btn btn-warning" onClick={()=> this.props.switchShowAllWords(true)}>
                             Zobraz všechna slovíčka
                         </button>
+                        </div>
                     </div>
 
                  <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} switchShowAllWords={this.props.switchShowAllWords} />
@@ -63,9 +66,9 @@ class TestingGuide extends React.Component {
 
                          <div className="row">
                         <div className="col-md-12">    
-                            {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
+                           {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
 
-                            nothing to upload
+                             nothing to upload
                           */}
                         </div>  
                     </div>

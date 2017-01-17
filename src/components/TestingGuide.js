@@ -45,20 +45,25 @@ class TestingGuide extends React.Component {
                             <Link className="col-md-8 col-md-offset-2 btn btn-danger" to="/testSlovicka">Procvičování slovíček
                             </Link>
                         </div>*/}
+                        <button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20}} onClick={()=> this.props.switchShowAllWords(true)}>
+                            Zobraz všechna slovíčka
+                        </button>
                     </div>
 
-                 <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} />
+                 <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} switchShowAllWords={this.props.switchShowAllWords} />
                     {/*<StopWatch />*/}
 
-                <div className="col-md-4 col-sm-12 addVocabulary-box">
+                <div className="col-md-4 col-sm-12 addVocabulary-box" style={{position:'relative'}}>
                     <h2>Přidat slovíčko</h2>
 
                     <AddWord addVocabulary={this.props.addVocabulary} showInfo={this.showInfo}/>
                     <p>{this.state.showInfo ? `Přidáno nové slovíčko ${[this.state.newCz]} / ${[this.state.newEn]}` : ''}</p>
 
-                    <div className="row">
-                        <div className="col-md-12">
-                           {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
+                
+
+                         <div className="row">
+                        <div className="col-md-12">    
+                            {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
 
                             nothing to upload
                           */}

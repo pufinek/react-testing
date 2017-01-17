@@ -37,6 +37,7 @@ class StudyVocabulary extends React.Component{
 		console.log(actualWord);
 		this.props.addUsedWordsStudy(usedWords);
 		this.setState({actualWordKey:actualWordKey, actualWord});
+		this.props.switchShowAllWords(false);
 	}
 
 	random10Words(e){
@@ -54,6 +55,7 @@ class StudyVocabulary extends React.Component{
 			actualWord.miss = 0;  //kolik chyb
 
 		}
+			this.props.switchShowAllWords(false);
 			this.props.addUsedWordsStudy(usedWords);
 			this.setState({actualWordKey:actualWordKey, actualWord});
 
@@ -71,7 +73,7 @@ class StudyVocabulary extends React.Component{
                 <h2>Výuka slovíček</h2>
                 <button onClick={(e) => this.generateWord(e)} >Další &nbsp;>></button>
 				<div style={{fontSize:20, fontWeight:'bold'}}><br />{this.state.actualWord.cz}<br /> = <br /> {this.state.actualWord.en}</div>
-				<button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20 }} onClick={(e) => this.random10Words(e)}>Náhodně 10 slov</button>
+				<button className="btn btn-warning" style={{position:'absolute', bottom:20, right:20 }} onClick={(e) => this.random10Words(e)}>Přidej náhodně 10 slov</button>
 				
             </div>
         )

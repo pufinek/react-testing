@@ -19,7 +19,13 @@ class ListOfWords extends React.Component{
 			    <div className="row">
                     <h2>{this.props.title}</h2>
                     <p>(Barevně označená slovíčka obsahují české znaky!)</p>
-                    <div style={{marginBottom:20}}>Filtr: <input type="text" ref={(input) => this.filtr =(input)} className="" onChange={() => this.handleChangeFiltr()} /></div>
+
+                    <div style={{marginBottom:20}}>
+                        Filtr: <input type="text" ref={(input) => this.filtr =(input)} className="" onChange={() => this.handleChangeFiltr()} />
+                        <button className="btn btn-danger disabled"  style={{marginLeft:20}}>Procvičit slovíčka</button>
+
+                    </div>
+
                     <ul className="vocabulary-list">
                         {
                             Object

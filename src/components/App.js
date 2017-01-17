@@ -21,10 +21,11 @@ class App extends React.Component {
         this.loadWords = this.loadWords.bind(this);
         this.addToVocabulary=this.addToVocabulary.bind(this);
         this.addUsedWordsStudy=this.addUsedWordsStudy.bind(this);
-
+        this.switchShowAllWords = this.switchShowAllWords.bind(this);
         this.state = {
             vocabulary: {}, 
-            usedWordsStudy: {}
+            usedWordsStudy: {},
+            showAllWords:false
         }
 
 
@@ -70,6 +71,10 @@ class App extends React.Component {
        this.setState({vocabulary});
 
     }
+    switchShowAllWords(bool){
+        //var show = !this.state.showAllWords;
+        this.setState({showAllWords:bool});
+    }
 
     loadWords(){
         Object.keys(slovickaSoubor).map((key) => this.addToVocabulary(slovickaSoubor[key].cz, slovickaSoubor[key].en)) 
@@ -91,12 +96,16 @@ class App extends React.Component {
         return (
             <div className="container">
 
-            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} />
+            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} switchShowAllWords={this.switchShowAllWords} />
 
+            {
+                (this.state.showAllWords) ?
+                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi"  />
+                :
+                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" />
 
-            <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" />
-            {/*<ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi"  />
-
+            }
+            {/*
                 <div className="row todo-list">
                 <h2>TODO:</h2>
                 <ul>

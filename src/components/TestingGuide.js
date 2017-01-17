@@ -50,6 +50,7 @@ class TestingGuide extends React.Component {
                         <button className="col-md-8 col-md-offset-2 btn btn-warning" onClick={()=> this.props.switchShowAllWords(true)}>
                             Zobraz všechna slovíčka
                         </button>
+                        <button className="col-md-8 col-md-offset-2 btn" onClick={() => this.props.switchShowAllWords(false)}>Zobraz vyučovaná slovíčka</button>
                         </div>
                     </div>
 

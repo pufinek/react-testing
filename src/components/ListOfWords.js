@@ -23,7 +23,7 @@ class ListOfWords extends React.Component{
                     <div style={{marginBottom:20}}>
                         Filtr: <input type="text" ref={(input) => this.filtr =(input)} className="" onChange={() => this.handleChangeFiltr()} />
                         {
-                        (Object.values(this.props.vocabulary).length>=5) ? <button className="btn btn-danger"  style={{marginLeft:20}}>Procvičit slovíčka</button> : <button className="btn btn-danger disabled" title="minimum k procvičování je 5 slovíček"  style={{marginLeft:20}}>Procvičit slovíčka</button>
+                        (Object.values(this.props.vocabulary).length>=5) ? <button className="btn btn-danger"  style={{marginLeft:20}}>Procvičit</button> : <button className="btn btn-danger disabled" title="minimum k procvičování je 5 slovíček"  style={{marginLeft:20}}>Procvičit</button>
                         }
                         
 

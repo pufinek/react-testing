@@ -5,26 +5,14 @@ class StudyVocabulary extends React.Component{
 	constructor(){
 		super();
 		this.generateWord = this.generateWord.bind(this);
-		this.getWordsKeys = this.getWordsKeys.bind(this);
 		this.random10Words = this.random10Words.bind(this);
 
 		this.state={
 			actualWordKey:'key-1483624209232',
-			//usedWords:[],
 			actualWord:''
-			//allKeys:[]
 		}
 	}
-
-	getWordsKeys(){
-		//všechny klíče slovíček
-		var keyArray=[];
-		Object.keys(this.props.vocabulary).map(key => keyArray.push(key));
-		return keyArray;
-		//this.setState({allKeys:pole});
-	}
-
-	generateWord(e){
+	/*generateWord(e){
 		e.preventDefault();
 		var keyArray = this.getWordsKeys(); //pole klíčů
 		var nahodnyIndex = random(0, keyArray.length);  //cislo 0-600
@@ -38,18 +26,35 @@ class StudyVocabulary extends React.Component{
 		this.props.addUsedWordsStudy(usedWords);
 		this.setState({actualWordKey:actualWordKey, actualWord});
 		this.props.switchShowAllWords(false);
+	}*/
+	generateWord(e){
+		e.preventDefault();
+		var keyArray = Object.keys(this.props.vocabulary);//pole klíčů
+		var nahodnyIndex = random(0, Object.keys(this.props.vocabulary).length);  //nahodne cislo 0-pocet slovicek
+		var actualWordKey = keyArray[nahodnyIndex]; //náhodný klíč např. key-14515655
+
+		//přidavam slovo pod klíčem k použitým
+		var usedWords = {...this.props.usedWordsStudy};
+		usedWords[actualWordKey] = this.props.vocabulary[actualWordKey];
+
+		var actualWord = this.props.vocabulary[actualWordKey];
+		actualWord.miss = 0;  //kolik chyb
+
+		this.props.addUsedWordsStudy(usedWords);  //aktualizace pole v state v App
+		this.setState({actualWordKey:actualWordKey, actualWord});
+		this.props.switchShowAllWords(false); //přepnutí výpisu na výuková slovíčka
 	}
 
 	random10Words(e){
 		e.preventDefault();
-		var keyArray = this.getWordsKeys(); //pole klíčů
+		var keyArray = Object.keys(this.props.vocabulary); //pole klíčů
 		var usedWords = {...this.props.usedWordsStudy};
 
 		for(var i=0; i<10; i++){
 			//console.log(i);
-			var nahodnyIndex = random(0, keyArray.length);  //cislo 0-600
-			var actualWordKey = keyArray[nahodnyIndex]; //key-14515655
-			//console.log(actualWordKey);
+			var nahodnyIndex = random(0, Object.keys(this.props.vocabulary).length);  //cislo 0-pocet slovicek
+			var actualWordKey = keyArray[nahodnyIndex]; //náhodný klíč např. key-14515655
+
 			usedWords[actualWordKey] = this.props.vocabulary[actualWordKey];
 			var actualWord = this.props.vocabulary[actualWordKey];
 			actualWord.miss = 0;  //kolik chyb
@@ -57,11 +62,7 @@ class StudyVocabulary extends React.Component{
 		}
 			this.props.switchShowAllWords(false);
 			this.props.addUsedWordsStudy(usedWords);
-			this.setState({actualWordKey:actualWordKey, actualWord});
-
-
-
-		
+			this.setState({actualWordKey:actualWordKey, actualWord});		
 	}
 
 

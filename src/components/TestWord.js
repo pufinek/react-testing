@@ -13,7 +13,8 @@ class TestWord extends React.Component {
         this.trvaniTestu=this.trvaniTestu.bind(this);
 
         this.state = {
-            actualWord:'a',
+            actualWordEN:'a',
+            actualWordCZ:'a',
             statisticTest:{
                 ok:0,
                 miss:0
@@ -28,11 +29,23 @@ class TestWord extends React.Component {
         this.setState({trvaniTestu:trvani, testRunning:false});
     }
 
-    generovaniSlova(vocabulary){
+    componentWillMount(){
+        this.generovaniSlova();
+    }
 
-        var slovo="ugacaga";
-        this.setState({actualWord:slovo});
-        //return znak;
+    generovaniSlova(){
+        //e.preventDefault();
+       
+        var keyArray = Object.keys(this.props.vocabulary);//pole klíčů
+        var nahodnyIndex = random(0, Object.keys(this.props.vocabulary).length);  //nahodne cislo 0-pocet slovicek
+        var actualWordKey = keyArray[nahodnyIndex]; //náhodný klíč např. key-14515655
+        var actualWord = this.props.vocabulary[actualWordKey];
+        var actualWordEN = actualWord.en;
+        var actualWordCZ = actualWord.cz;
+        //this.setState({actualWordKey:actualWordKey, actualWord});
+
+        this.setState({actualWordEN, actualWordCZ});
+
     }
 
     unShake(){
@@ -42,14 +55,13 @@ class TestWord extends React.Component {
     renderTest(writtenWord){
         //let writtenWord=writtenWord;
         const statisticTest={...this.state.statisticTest};
-       
-        if(writtenWord === this.state.actualWord){
+        if(writtenWord === this.state.actualWordEN){
             statisticTest.ok++;
-            document.getElementById('allWrittenLetters').innerHTML+=writtenWord+" ";
+            document.getElementById('allWrittenLetters').innerHTML+=writtenWord+"<br />";
         }
         else{
            statisticTest.miss++;
-           document.getElementById('allWrittenLetters').innerHTML+=writtenWord+`<span>(${[this.state.actualWord]})</span> `;
+           document.getElementById('allWrittenLetters').innerHTML+=writtenWord+`<span>(${[this.state.actualWordEN]})</span><br />`;
            document.getElementById('actualWord').classList.add('shake');
            setTimeout(this.unShake, 500);        
 
@@ -57,12 +69,11 @@ class TestWord extends React.Component {
         this.setState({statisticTest});
         const znakyCelkem = statisticTest.miss+statisticTest.ok;
        
-        this.generovaniSlova(this.props.vocabulary);
+        this.generovaniSlova();
     }
 
     konecTestu(){        
         this.setState({testRunning:false});
-       console.log("konec testu"); //xjb
     }
 
 
@@ -71,12 +82,12 @@ class TestWord extends React.Component {
     render() {
         return (
             <div className="testing-form" >
-                <h2>Stiskněte klávesu: <strong>{this.state.actualWord}</strong></h2>
+                <h2>Zapište anglický výraz: <strong style={{color:'black'}}>{this.state.actualWordEN}</strong></h2>
 
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        {/*<p>`${[this.state.actualWord.cz]} = ${[this.state.actualWord.en]}`</p>*/}
-                        <TestInput actualWord={this.state.actualWord} renderTest={this.renderTest} testRunning={this.state.testRunning} />
+                        <p style={{textAlign:'center', fontSize:18}}> Česky: &nbsp;<span style={{fontSize:20, fontWeight:'bold'}}>{[this.state.actualWordCZ]}</span></p>
+                        <TestInput actualWord={this.state.actualWordEN} renderTest={this.renderTest} testRunning={this.state.testRunning} />
                         <TestWrittenSymbols title="Zapsaná slova: " />
                     </div>
 

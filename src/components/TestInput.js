@@ -1,6 +1,10 @@
 import React from 'react';
 
 class TestInput extends React.Component{
+    constructor(){
+        super();
+        this.onSubmitHandle = this.onSubmitHandle.bind(this);
+    }
 
 	onSubmitHandle(e){
         e.preventDefault();
@@ -19,6 +23,7 @@ class TestInput extends React.Component{
                         className="actualLetter col-md-12" 
                         ref={(input) => this.writtenWord = (input)} 
                         id="actualWord"
+                        autoComplete="off"
                         autoFocus
                 />
             :   //testování ukonceno - vypnuty timer

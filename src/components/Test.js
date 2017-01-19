@@ -93,7 +93,10 @@ class Test extends React.Component {
 
     konecTestu(){        
         this.setState({testRunning:false});
-       console.log("konec testu"); //xjb
+    }
+
+    componentWillMount(){
+        this.generovaniZnakuZvolenehoTestu();
     }
 
 

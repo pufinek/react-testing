@@ -20,7 +20,6 @@ class ListOfWords extends React.Component{
     }
     switchRunVocabularyTest(e){
         e.preventDefault();
-        console.log("switch");
         let prom = this.state.runVocabularyTest;
         this.setState({runVocabularyTest:!prom});
     }
@@ -30,7 +29,7 @@ class ListOfWords extends React.Component{
 		return(
             <div>{
                 (this.state.runVocabularyTest) ?
-                <TestVocabulary switchRunVocabularyTest={this.switchRunVocabularyTest} />
+                <TestVocabulary switchRunVocabularyTest={this.switchRunVocabularyTest} vocabulary={this.props.vocabulary} />
                 :            
                
 			    <div className="row">

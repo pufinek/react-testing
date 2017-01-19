@@ -19,6 +19,7 @@ class TestInputOneLetter extends React.Component{
                         ref={(input) => this.writtenLetter = (input)} 
                         onChange={(e) => this.onChangeHandle(e)}
                         id="actualLetter"
+                        autoComplete="off"
                         autoFocus
                 />
             :   //testování ukonceno - vypnuty timer

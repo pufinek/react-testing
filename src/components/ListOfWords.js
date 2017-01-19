@@ -1,29 +1,46 @@
 import React from 'react';
-import Word from '../components/Word';
+import Word from './Word';
+import TestVocabulary from './TestVocabulary';
 
 class ListOfWords extends React.Component{
     constructor(){
         super();
         this.handleChangeFiltr = this.handleChangeFiltr.bind(this);
+        this.switchRunVocabularyTest = this.switchRunVocabularyTest.bind(this);
 
-        this.state={searching:''}
+        this.state={
+            searching:'',
+            runVocabularyTest:false
+        }
     }
 
     handleChangeFiltr(){
         let filtrInput = this.filtr.value;
         this.setState({searching:filtrInput});
     }
+    switchRunVocabularyTest(e){
+        e.preventDefault();
+        console.log("switch");
+        let prom = this.state.runVocabularyTest;
+        this.setState({runVocabularyTest:!prom});
+    }
+
 
 	render(){
 		return(
+            <div>{
+                (this.state.runVocabularyTest) ?
+                <TestVocabulary switchRunVocabularyTest={this.switchRunVocabularyTest} />
+                :            
+               
 			    <div className="row">
                     <h2>{this.props.title}</h2>
                     <p>(Barevně označená slovíčka obsahují české znaky!)</p>
 
                     <div style={{marginBottom:20}}>
                         Filtr: <input type="text" ref={(input) => this.filtr =(input)} className="" onChange={() => this.handleChangeFiltr()} />
-                        {
-                        (Object.values(this.props.vocabulary).length>=5) ? <button className="btn btn-danger"  style={{marginLeft:20}}>Procvičit</button> : <button className="btn btn-danger disabled" title="minimum k procvičování je 5 slovíček"  style={{marginLeft:20}}>Procvičit</button>
+                        { //procvicovani pouze pokud array obsahuje vice jak 5 slovicek
+                        (Object.values(this.props.vocabulary).length>=5) ? <button className="btn btn-danger" onClick={(e) => this.switchRunVocabularyTest(e)}  style={{marginLeft:20}}>Procvičit</button> : <button className="btn btn-danger disabled" title="minimum k procvičování je 5 slovíček"  style={{marginLeft:20}}>Procvičit</button>
                         }
                         
 
@@ -41,6 +58,8 @@ class ListOfWords extends React.Component{
                         }
                     </ul>
                 </div>
+            }
+            </div>
 		)
 	}
 }

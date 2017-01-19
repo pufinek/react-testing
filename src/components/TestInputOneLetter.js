@@ -1,24 +1,24 @@
 import React from 'react';
 
-class TestInput extends React.Component{
+class TestInputOneLetter extends React.Component{
 
-	onSubmitHandle(e){
-        e.preventDefault();
-		let writtenWord=this.writtenWord.value;
-		this.props.renderTest(writtenWord);
-		this.writtenWord.value="";
+	onChangeHandle(e){
+		let writtenLetter=e.target.value;
+		this.props.renderTest(writtenLetter);
+		this.writtenLetter.value="";
 	}
 
 
 	render(){
 		return (
-            <form  onSubmit={(e) => this.onSubmitHandle(e)}>
+			<span>
 			{ this.props.testRunning ? //probíhá testování, protoze bezi Timer
 				<input type="text" 
-                        placeholder={this.props.actualWord} 
+                        placeholder={this.props.aktualLetter} 
                         className="actualLetter col-md-12" 
-                        ref={(input) => this.writtenWord = (input)} 
-                        id="actualWord"
+                        ref={(input) => this.writtenLetter = (input)} 
+                        onChange={(e) => this.onChangeHandle(e)}
+                        id="actualLetter"
                         autoFocus
                 />
             :   //testování ukonceno - vypnuty timer
@@ -26,20 +26,19 @@ class TestInput extends React.Component{
                         placeholder="test ukončen" 
                         className="actualLetter col-md-12" 
                         disabled
-                        id="actualWord"
+                        id="actualLetter"
                         autoFocus
                 />
-
-			}</form>
+			}</span>
 				
 
 		)
 	}
 }
-TestInput.propTypes = {
+TestInputOneLetter.propTypes = {
     renderTest:React.PropTypes.func.isRequired,
     testRunning:React.PropTypes.bool.isRequired,
-    actualWord:React.PropTypes.string.isRequired,
+    aktualLetter:React.PropTypes.string.isRequired,
 }
 
-export default TestInput;
+export default TestInputOneLetter;

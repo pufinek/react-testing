@@ -1,6 +1,6 @@
 import React from 'react';
 import {randomZnak, random} from '../helpers';
-import TestInput from './TestInput';
+import TestInputOneLetter from './TestInputOneLetter';
 import TestWrittenSymbols from './TestWrittenSymbols';
 import TestActiveStatistic from './TestActiveStatistic';
 
@@ -21,7 +21,6 @@ class Test extends React.Component {
                 ok:0,
                 miss:0
             },
-            showLastStatistic:false,
             startTestuString:new Date().toLocaleTimeString(),
             trvaniTestu:0,
             testRunning:true
@@ -61,8 +60,7 @@ class Test extends React.Component {
        document.getElementById('actualLetter').classList.remove('shake');
     }
 
-    renderTest(writtenletter){
-        let writtenLetter=writtenletter;
+    renderTest(writtenLetter){
         const statisticTest={...this.state.statisticTest};
        
         if(writtenLetter === this.state.aktualLetter){
@@ -108,8 +106,8 @@ class Test extends React.Component {
 
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <TestInput aktualLetter={this.state.aktualLetter} renderTest={this.renderTest} testRunning={this.state.testRunning} />
-                        <TestWrittenSymbols />
+                        <TestInputOneLetter aktualLetter={this.state.aktualLetter} renderTest={this.renderTest} testRunning={this.state.testRunning} />
+                        <TestWrittenSymbols  title="Zapsaná písmena: " />
                     </div>
 
                     <TestActiveStatistic statisticTest={this.state.statisticTest} testRunning={this.state.testRunning} startTestuString={this.state.startTestuString} trvaniTestu={this.trvaniTestu}/>
@@ -121,7 +119,7 @@ class Test extends React.Component {
 }
 
 Test.propTypes = {
-    selectedTestOption:React.PropTypes.object.isRequired,
+    selectedTestOption:React.PropTypes.object,
 }
 
 export default Test;

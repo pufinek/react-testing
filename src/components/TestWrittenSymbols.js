@@ -6,7 +6,7 @@ class TestWrittenSymbols extends React.Component{
 	render(){
 		return (
 			<div id="allWrittenLetters" className="col-md-12">
-                Zapsaná písmena:<br />
+                {this.props.title}<br />
             </div>
 		)
 	}

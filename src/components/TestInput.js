@@ -37,8 +37,8 @@ class TestInput extends React.Component{
 }
 TestInput.propTypes = {
     renderTest:React.PropTypes.func.isRequired,
-    testRunning:React.PropTypes.func.isRequired,
-    aktualLetter:React.PropTypes.func.isRequired,
+    testRunning:React.PropTypes.bool.isRequired,
+    aktualLetter:React.PropTypes.string.isRequired,
 }
 
 export default TestInput;

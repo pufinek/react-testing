@@ -36,7 +36,7 @@ class TestActiveStatistic extends React.Component{
 
                             	<tr>              
                             		<td colSpan="2">Trvání testu:</td>
-                            		<td colSpan="2" ><Timer endTest={this.props.endTest} testRunning={this.props.testRunning} trvaniTestu={this.props.trvaniTestu} /></td>
+                            		<td colSpan="2" ><Timer testRunning={this.props.testRunning} trvaniTestu={this.props.trvaniTestu} /></td>
                             	</tr>
 
                             </tfoot>
@@ -49,7 +49,6 @@ TestActiveStatistic.propTypes = {
 
     statisticTest:React.PropTypes.object.isRequired,   
     startTestuString:React.PropTypes.string.isRequired,
-        endTest:React.PropTypes.bool.isRequired,
     testRunning:React.PropTypes.bool.isRequired,
     trvaniTestu:React.PropTypes.func.isRequired,
 }

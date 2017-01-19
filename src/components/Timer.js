@@ -96,7 +96,7 @@ class Timer extends React.Component{
 
 Timer.propTypes = {
   trvaniTestu:React.PropTypes.func.isRequired,
-    testRunning:React.PropTypes.func.isRequired,
+    testRunning:React.PropTypes.bool.isRequired,
 }
 
 export default Timer;

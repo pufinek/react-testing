@@ -92,10 +92,27 @@ class App extends React.Component {
             context: this,
             state:'vocabulary'
         });
+
+
+        //kouknem zda je na lokale jiz neco uloženo (JSON.parse je nutny pro převod ze String na Object)
+        const localStorageRef = localStorage.getItem("usedWordsStudy");
+        if(localStorageRef){
+            this.setState({
+                usedWordsStudy: JSON.parse(localStorageRef)
+            });
+        }
     }
 
     componentWillUnmount(){
         base.removeBinding(this.ref);
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        //uložime na local pod nazev (JSON.stringify je nutny pro převod na String, jinak by se to ukladalo jako Object a to na localu nejde)
+        
+        localStorage.setItem("usedWordsStudy", 
+            JSON.stringify(nextState.usedWordsStudy));
+
     }
 
 

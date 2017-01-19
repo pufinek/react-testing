@@ -28,7 +28,7 @@ class Word extends React.Component{
 
 Word.propTypes = {
     details:React.PropTypes.object.isRequired,
-    filtr:React.PropTypes.func.isRequired,
+    filtr:React.PropTypes.string.isRequired,
     index:React.PropTypes.string.isRequired,
     updateWord:React.PropTypes.func.isRequired,
     vyuka:React.PropTypes.bool.isRequired,

@@ -10,7 +10,7 @@ class ListOfWords extends React.Component{
     }
 
     handleChangeFiltr(){
-        var filtrInput = this.filtr.value;
+        let filtrInput = this.filtr.value;
         this.setState({searching:filtrInput});
     }
 
@@ -43,7 +43,14 @@ class ListOfWords extends React.Component{
                 </div>
 		)
 	}
-	
 }
 
+ListOfWords.propTypes = {
+    title: React.PropTypes.string.isRequired,
+    vocabulary: React.PropTypes.object.isRequired,
+    updateWord:React.PropTypes.func.isRequired,
+    removeWord:React.PropTypes.func.isRequired,
+    vyuka:React.PropTypes.bool.isRequired
+
+}
 export default ListOfWords;

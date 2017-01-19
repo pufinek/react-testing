@@ -4,7 +4,7 @@ import WordInput from '../components/WordInput';
 class Word extends React.Component{
     render(){
     	const word=this.props.details; //info o aktualnim slove
-        var searching = this.props.filtr;
+        let searching = this.props.filtr;
 
         return(
             <span>
@@ -24,6 +24,15 @@ class Word extends React.Component{
         )
     }
 
+}
+
+Word.propTypes = {
+    details:React.PropTypes.object.isRequired,
+    filtr:React.PropTypes.func.isRequired,
+    index:React.PropTypes.string.isRequired,
+    updateWord:React.PropTypes.func.isRequired,
+    vyuka:React.PropTypes.bool.isRequired,
+    removeWord:React.PropTypes.func.isRequired,
 }
 {/* tohle bude jen vypisovat vysledky - bute to Stateless Function */}
 export default Word;

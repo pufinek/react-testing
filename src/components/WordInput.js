@@ -23,7 +23,7 @@ class WordInput extends React.Component{
 	disableEditing(index, e){
 		//aktualizace stavo o háčcích až po kliknutí mimo input
 		const word=this.props.details;
-		var updatedWord;
+		let updatedWord;
         if(e.target.name==='cz'){
         	const hacky=maHacky(e.target.value);
    			updatedWord = {...word, [e.target.name]:e.target.value, hacky}
@@ -38,7 +38,7 @@ class WordInput extends React.Component{
 	handleChange(index, e){
 		//aktualizace znaků ve slově (při kontrole háčků okamžitě se výrazně zpomalil program)
         const word=this.props.details;
-        var updatedWord;
+        let updatedWord;
              
         this.props.updateWord(index, updatedWord);
 
@@ -69,5 +69,12 @@ class WordInput extends React.Component{
             </span>
 		)
 	}
+}
+
+WordInput.propTypes = {
+	language:React.PropTypes.string.isRequired,
+    details:React.PropTypes.object.isRequired,
+    index:React.PropTypes.string.isRequired,
+    updateWord:React.PropTypes.func.isRequired,
 }
 export default WordInput;

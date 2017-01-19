@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import AddWord from './AddWord';
 import StudyVocabulary from './StudyVocabulary';
-import StopWatch from './StopWatch';
+
 
 class TestingGuide extends React.Component {
         constructor(){
@@ -54,7 +54,7 @@ class TestingGuide extends React.Component {
                         </div>
                     </div>
 
-                 <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} switchShowAllWords={this.props.switchShowAllWords} />
+                 <StudyVocabulary vocabulary={this.props.vocabulary} addUsedWordsStudy={this.props.addUsedWordsStudy} usedWordsStudy={this.props.usedWordsStudy} switchShowAllWords={this.props.switchShowAllWords} clearUsedWordsStudy={this.props.clearUsedWordsStudy}/>
                     {/*<StopWatch />*/}
 
                 <div className="col-md-4 col-sm-12 addVocabulary-box" style={{position:'relative'}}>
@@ -79,6 +79,14 @@ class TestingGuide extends React.Component {
     }
 
 }
-{/* tohle bude jen vypisovat vysledky - bute to Stateless Function */}
+
+TestingGuide.propTypes = {
+    switchShowAllWords:React.PropTypes.func.isRequired,
+    addUsedWordsStudy:React.PropTypes.func.isRequired,
+    usedWordsStudy:React.PropTypes.object.isRequired,
+    clearUsedWordsStudy:React.PropTypes.func.isRequired,
+    addVocabulary:React.PropTypes.func.isRequired
+
+}
 
 export default TestingGuide;

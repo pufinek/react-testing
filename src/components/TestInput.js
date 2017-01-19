@@ -3,7 +3,7 @@ import React from 'react';
 class TestInput extends React.Component{
 
 	onChangeHandle(e){
-		var writtenLetter=e.target.value;
+		let writtenLetter=e.target.value;
 		this.props.renderTest(writtenLetter);
 		this.writtenLetter.value="";
 	}
@@ -34,6 +34,11 @@ class TestInput extends React.Component{
 
 		)
 	}
+}
+TestInput.propTypes = {
+    renderTest:React.PropTypes.func.isRequired,
+    testRunning:React.PropTypes.func.isRequired,
+    aktualLetter:React.PropTypes.func.isRequired,
 }
 
 export default TestInput;

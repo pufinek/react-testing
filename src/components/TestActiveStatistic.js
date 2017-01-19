@@ -6,7 +6,7 @@ import Timer from './Timer';
 class TestActiveStatistic extends React.Component{
 
 	render(){
-		var uspesnost = (this.props.statisticTest.ok / (this.props.statisticTest.ok+this.props.statisticTest.miss))*100;
+		let uspesnost = (this.props.statisticTest.ok / (this.props.statisticTest.ok+this.props.statisticTest.miss))*100;
 		uspesnost = (isNaN(uspesnost) ? 0 : uspesnost.toFixed(4));
 		setInterval(this.tick, 1000);
 
@@ -45,5 +45,12 @@ class TestActiveStatistic extends React.Component{
 		)
 	}
 }
+TestActiveStatistic.propTypes = {
 
+    statisticTest:React.PropTypes.object.isRequired,   
+    startTestuString:React.PropTypes.string.isRequired,
+        endTest:React.PropTypes.bool.isRequired,
+    testRunning:React.PropTypes.bool.isRequired,
+    trvaniTestu:React.PropTypes.func.isRequired,
+}
 export default TestActiveStatistic;

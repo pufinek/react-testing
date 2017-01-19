@@ -22,6 +22,8 @@ class App extends React.Component {
         this.addToVocabulary=this.addToVocabulary.bind(this);
         this.addUsedWordsStudy=this.addUsedWordsStudy.bind(this);
         this.switchShowAllWords = this.switchShowAllWords.bind(this);
+        this.clearUsedWordsStudy = this.clearUsedWordsStudy.bind(this);
+
         this.state = {
             vocabulary: {}, 
             usedWordsStudy: {},
@@ -33,6 +35,11 @@ class App extends React.Component {
 
     addUsedWordsStudy(newWordArray) {
         this.setState({usedWordsStudy:newWordArray});
+    }
+
+    clearUsedWordsStudy(){
+        let emptyArray={};
+        this.setState({usedWordsStudy:emptyArray});
     }
 
     addVocabulary(Word) {
@@ -96,13 +103,13 @@ class App extends React.Component {
         return (
             <div className="container">
 
-            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} switchShowAllWords={this.switchShowAllWords} />
+            <TestingGuide addVocabulary={this.addVocabulary}  loadWords={this.loadWords} addUsedWordsStudy={this.addUsedWordsStudy} usedWordsStudy={this.state.usedWordsStudy} vocabulary={this.state.vocabulary} switchShowAllWords={this.switchShowAllWords} clearUsedWordsStudy={this.clearUsedWordsStudy} />
 
             {
                 (this.state.showAllWords) ?
                 <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi" vyuka={false}  />
                 :
-                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" vyuka={true} />
+                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" vyuka={true}  />
 
             }
             {/*
@@ -130,5 +137,6 @@ class App extends React.Component {
         )
     }
 }
+
 
 export default App;

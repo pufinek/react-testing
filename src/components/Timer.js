@@ -25,7 +25,7 @@ class Timer extends React.Component{
 
   }
   componentDidMount(){
-        var timer = setInterval(this.tick, 33);
+        let timer = setInterval(this.tick, 33);
           this.setState({
             isStart: true,
             timer: timer,
@@ -42,28 +42,18 @@ class Timer extends React.Component{
         if(!this.props.testRunning){
           this.konecTestu;
         }else{
-          var elapsed = Date.now() - this.state.start + this.state.diff;
+          let elapsed = Date.now() - this.state.start + this.state.diff;
         this.setState({elapsed: elapsed});
         }
         
     }
 
 	getTimeSpan(elapsed) { // 754567(ms) -> "12:34.567"
-        var m = String(Math.floor(elapsed/1000/60)+100).substring(1);
-        var s = String(Math.floor((elapsed%(1000*60))/1000)+100).substring(1);
+        let m = String(Math.floor(elapsed/1000/60)+100).substring(1);
+        let s = String(Math.floor((elapsed%(1000*60))/1000)+100).substring(1);
         //var ms = String(elapsed % 1000 + 1000).substring(1);
         return m+":"+s;
   }
-
-	/*onClick() {
-          var timer = setInterval(this.tick, 33);
-          this.setState({
-            isStart: true,
-            timer: timer,
-            //start: new Date(),
-            start:this.props.startTestu
-          });
-      }*/
 
 	reset() {
         clearInterval(this.state.timer);
@@ -76,7 +66,7 @@ class Timer extends React.Component{
       }
 
 	render(){
-    var style={
+    let style={
 
       buttonKonec:{
           marginLeft:30,
@@ -102,6 +92,11 @@ class Timer extends React.Component{
 
 	}
 	
+}
+
+Timer.propTypes = {
+  trvaniTestu:React.PropTypes.func.isRequired,
+    testRunning:React.PropTypes.func.isRequired,
 }
 
 export default Timer;

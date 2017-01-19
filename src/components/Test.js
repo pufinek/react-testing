@@ -33,8 +33,8 @@ class Test extends React.Component {
     }
 
     generovaniZnaku(retezecSeZnaky, velkeBool){
-        var znak=randomZnak(retezecSeZnaky);
-        var zvetsit = Math.floor(random(0,2));
+        let znak=randomZnak(retezecSeZnaky);
+        let zvetsit = Math.floor(random(0,2));
         if(velkeBool && zvetsit===1){ //pokud ma obsahovat i velké, tak náhodně zvětšíme znak, nebo ne
             znak = znak.toUpperCase();
         }
@@ -43,8 +43,8 @@ class Test extends React.Component {
     }
 
     generovaniZnakuZvolenehoTestu(){
-        var znaky=this.state.pismena; //univerzálně používám bez diakritiky
-        var velkaPismena = false; //univerzálně používám malá písmena
+        let znaky=this.state.pismena; //univerzálně používám bez diakritiky
+        let velkaPismena = false; //univerzálně používám malá písmena
         //toto nastaveni odpovida case 'mala' pro 'selectedTestOption.testType'
         switch(this.props.selectedTestOption.testType){
             case 'velka': velkaPismena=true; break;
@@ -62,7 +62,7 @@ class Test extends React.Component {
     }
 
     renderTest(writtenletter){
-        var writtenLetter=writtenletter;
+        let writtenLetter=writtenletter;
         const statisticTest={...this.state.statisticTest};
        
         if(writtenLetter === this.state.aktualLetter){
@@ -118,6 +118,10 @@ class Test extends React.Component {
             </div>
         )
     }
+}
+
+Test.propTypes = {
+    selectedTestOption:React.PropTypes.object.isRequired,
 }
 
 export default Test;

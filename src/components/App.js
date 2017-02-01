@@ -23,6 +23,8 @@ class App extends React.Component {
         this.addUsedWordsStudy=this.addUsedWordsStudy.bind(this);
         this.switchShowAllWords = this.switchShowAllWords.bind(this);
         this.clearUsedWordsStudy = this.clearUsedWordsStudy.bind(this);
+        this.addToEducation = this.addToEducation.bind(this);
+        this.removeEducatedWord = this.removeEducatedWord.bind(this);
 
         this.state = {
             vocabulary: {}, 
@@ -35,6 +37,14 @@ class App extends React.Component {
 
     addUsedWordsStudy(newWordArray) {
         this.setState({usedWordsStudy:newWordArray});
+    }
+
+    addToEducation(key){
+      //přidávíme i do procvičovaných slovíček
+        const usedWordsStudy = {...this.state.usedWordsStudy};
+        usedWordsStudy[key] =this.state.vocabulary[key];
+        console.log(this.state.vocabulary[key]);
+        this.setState({usedWordsStudy});
     }
 
     clearUsedWordsStudy(){
@@ -73,11 +83,18 @@ class App extends React.Component {
     }
 
     removeWord(key){
-
             const vocabulary={...this.state.vocabulary};
             vocabulary[key]=null;
             this.setState({vocabulary}); 
     }
+    removeEducatedWord(key){
+            const usedWordsStudy={...this.state.usedWordsStudy};
+            delete usedWordsStudy[key];
+            this.setState({usedWordsStudy}); 
+    }
+
+
+
     switchShowAllWords(bool){
         //var show = !this.state.showAllWords;
         this.setState({showAllWords:bool});
@@ -124,9 +141,9 @@ class App extends React.Component {
 
             {
                 (this.state.showAllWords) ?
-                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi" vyuka={false}  />
+                <ListOfWords vocabulary={this.state.vocabulary} updateWord={this.updateWord} removeWord={this.removeWord}  title="Všechna slovíčka v databázi" vyuka={false}  addToEducation={this.addToEducation} />
                 :
-                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" vyuka={true}  />
+                <ListOfWords vocabulary={this.state.usedWordsStudy} updateWord={this.updateWord} removeWord={this.removeWord} title="Studovaná slovíčka" vyuka={true} addToEducation={this.addToEducation} removeEducatedWord={this.removeEducatedWord} />
 
             }
             {/*

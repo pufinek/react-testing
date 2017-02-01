@@ -53,7 +53,7 @@ class ListOfWords extends React.Component{
                         {
                             Object
                                 .keys(this.props.vocabulary)
-                                .map(key => <Word key={key} index={key} details={this.props.vocabulary[key]} filtr={this.state.searching} updateWord={this.props.updateWord} removeWord={this.props.removeWord} vyuka={this.props.vyuka}/>)
+                                .map(key => <Word key={key} index={key} details={this.props.vocabulary[key]} filtr={this.state.searching} updateWord={this.props.updateWord} removeWord={this.props.removeWord} addToEducation={this.props.addToEducation} removeEducatedWord={this.props.removeEducatedWord} vyuka={this.props.vyuka}/>)
                         }
                     </ul>
                 </div>

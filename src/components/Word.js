@@ -14,7 +14,9 @@ class Word extends React.Component{
 
                 <WordInput details={word} language="cz" index={this.props.index} updateWord={this.props.updateWord}/>
                 <WordInput  details={word} language="en" index={this.props.index} updateWord={this.props.updateWord}/>
-                { (!this.props.vyuka) ? <span className="cross" onClick={() => this.props.removeWord(this.props.index)}>x</span> : null}
+                { (!this.props.vyuka) ? <span className="cross" onClick={() => this.props.removeWord(this.props.index)}><span className="glyphicon glyphicon-trash" title="Smazat z databáze"></span></span> : <span className="cross" onClick={() => this.props.removeEducatedWord(this.props.index)}><span className="glyphicon glyphicon-remove" title="Smazat z procvičovaných"></span></span>}
+                { (!this.props.vyuka) ? <span className="edu" onClick={() => this.props.addToEducation(this.props.index)}><span className="glyphicon glyphicon-education" title="Přidat k procvičovaným"></span></span> : null}
+
                 {/*mazani položky neni možne pri studiu, jen v celém seznamu slovíček*/}
 
             </li>

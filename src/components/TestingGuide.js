@@ -67,8 +67,8 @@ class TestingGuide extends React.Component {
 
                          <div className="row">
                         <div className="col-md-12">    
-                           {/* <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst ze souboru</button>
-
+                            <button className="btn btn-primary" onClick={this.props.loadWords}>Načíst z slovicka.json</button>
+{/*
                              nothing to upload
                           */}
                         </div>  
